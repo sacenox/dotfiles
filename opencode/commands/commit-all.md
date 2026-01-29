@@ -5,8 +5,11 @@ description: Stage and commit all changes with a generated message
 
 Run the following steps to stage and commit the code. If you want formatting and linting, run `/format-then-lint` first.
 
+**IMPORTANT**: This command stages and commits ALL changes in the working directory. Do not cherry-pick or selectively stage files unless there are sensitive files (credentials, secrets) that should not be committed. Stage everything with `git add .` as instructed.
+
 1.  **Stage Changes**:
     - Run `git add .` to stage all modified and untracked files.
+    - Do not selectively stage only some files - stage everything unless there are security concerns.
 
 2.  **Generate Commit**:
     - Analyze the staged changes (using `git diff --cached` if necessary to understand the context).
