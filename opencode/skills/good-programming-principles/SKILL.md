@@ -1,7 +1,7 @@
 ---
 name: good-programming-principles
-description: Practical principles for simple, maintainable, resilient code.
-version: 0.0.0
+description: Load when designing, writing, editing, refactoring, or reviewing code. Applies KISS, DRY, YAGNI, and SOLID principles to keep solutions simple, scoped, and maintainable while avoiding overengineering.
+version: 0.0.1
 ---
 
 # Good Programming Principles

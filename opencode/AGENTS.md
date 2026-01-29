@@ -27,3 +27,7 @@ Load and apply the `token-efficiency-opencode` skill to minimize token usage.
 # Programming principles
 
 When designing, refactoring, editing, adding, or reviewing code, load and apply the `good-programming-principles` skill. Use it to keep solutions simple, scoped, and maintainable.
+
+Comments should only be used when the code can't be self explanatory.
+
+We don't leave TODO comments or any other sort of pending work.

@@ -1,6 +1,6 @@
 ---
 name: token-efficiency-opencode
-description: Token optimization best practices for cost-effective agent usage.
+description: Load before any file operation, codebase exploration, or task involving large outputs. Provides strategies to minimize token usage by 90%+ through smart filtering, parallel calls, and avoiding full file reads.
 version: 0.0.0
 ---
 
