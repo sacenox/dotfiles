@@ -17,7 +17,6 @@ My Neovim setup with custom keybindings, plugins, and color schemes.
 - **init.lua** - Main configuration file
 - **lua/plugins/** - Plugin configurations using lazy.nvim
 - **colors/** - Custom color schemes
-- **KEYBINDINGS.md** - Documentation of custom keybindings
 - **README.md** - Detailed Neovim setup documentation
 
 ### OpenCode Configuration
