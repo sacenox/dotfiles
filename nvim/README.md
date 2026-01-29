@@ -10,6 +10,7 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
 ├── lua/
 │   └── plugins/          # Plugin configurations
 │       ├── oil.lua       # File explorer
+│       ├── lsp.lua       # LSP configuration with Mason
 │       ├── diffview.lua  # Git diff viewer
 │       ├── gitsigns.lua  # Git decorations
 │       ├── comment.lua   # Comment toggling
@@ -23,6 +24,11 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
 
 ### File Management
 - **oil.nvim** - Edit your filesystem like a buffer. Press `-` or `<Space>n` to open.
+
+### Language Server Protocol (LSP)
+- **nvim-lspconfig** - LSP client configuration for Neovim
+- **mason.nvim** - Package manager for LSP servers, DAP servers, linters, and formatters
+- **mason-lspconfig.nvim** - Bridge between mason.nvim and nvim-lspconfig
 
 ### Git Integration
 - **diffview.nvim** - Review git changes, commits, and file history with ease.
@@ -48,18 +54,23 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
    :Lazy
    ```
 
-4. Try the file explorer:
+4. Install LSP servers (optional):
+   ```
+   :Mason
+   ```
+
+5. Try the file explorer:
    ```
    Press <Space>n or -
    ```
 
-5. Try commenting:
+6. Try commenting:
    ```
    Press gcc        (toggle comment on line)
    Press gc + motion (comment with motion, e.g., gcap)
    ```
 
-6. Try git integration (in a git repo):
+7. Try git integration (in a git repo):
    ```
    Press <Space>dv  (open diffview)
    Press ]c         (next git change)
@@ -68,6 +79,7 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
 ## Key Features
 
 - **Leader key**: `Space`
+- **LSP support**: Language server protocol with Mason package manager for easy server installation
 - **File explorer**: Buffer-based with oil.nvim (edit filesystem like text)
 - **Git diff viewer**: Comprehensive diff interface with diffview.nvim
 - **Git decorations**: Inline change markers with gitsigns.nvim
@@ -91,6 +103,8 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
 ## Resources
 
 - [lazy.nvim docs](https://github.com/folke/lazy.nvim)
+- [nvim-lspconfig docs](https://github.com/neovim/nvim-lspconfig)
+- [mason.nvim docs](https://github.com/williamboman/mason.nvim)
 - [oil.nvim docs](https://github.com/stevearc/oil.nvim)
 - [diffview.nvim docs](https://github.com/sindrets/diffview.nvim)
 - [gitsigns.nvim docs](https://github.com/lewis6991/gitsigns.nvim)
