@@ -31,7 +31,7 @@ Configuration for the OpenCode AI coding assistant.
 
 ## Installation
 
-To use these configurations, symlink the desired config directories to their expected locations:
+Use the provided `install.sh` or symlink the desired config directories or files to their expected locations:
 
 ```bash
 # Neovim
