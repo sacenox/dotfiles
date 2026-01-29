@@ -46,7 +46,3 @@ ln -s /path/to/dotfiles/opencode ~/.config/opencode
 
 - Neovim >= 0.9.0
 - OpenCode CLI tool
-
-## License
-
-Personal use only.
