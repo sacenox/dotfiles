@@ -1,7 +1,7 @@
 ---
 name: token-efficiency-opencode
 description: Load before any file operation, codebase exploration, or task involving large outputs. Provides strategies to minimize token usage by 90%+ through smart filtering, parallel calls, and avoiding full file reads.
-version: 0.0.0
+version: 0.0.1
 ---
 
 # Token Efficiency Expert
