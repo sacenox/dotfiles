@@ -6,59 +6,6 @@ Personal configuration files for development tools and environments.
 
 This repository contains my personal configuration files (dotfiles) for various development tools. These configurations are tailored to my workflow and preferences.
 
-## Contents
-
-### Neovim Configuration
-
-Location: `nvim/`
-
-Modern Neovim setup using Lua and lazy.nvim plugin manager with LSP support, git integration, and a tree-based file explorer.
-
-- **init.lua** - Main configuration file with basic settings and keybindings
-- **lua/plugins/** - Plugin configurations (nvim-tree, bufferline, LSP with Mason, gitsigns, fugitive, lualine, comment)
-- **colors/ansi.vim** - Terminal-respecting 16-color ANSI colorscheme
-- **README.md** - Detailed Neovim setup documentation
-
-**Key Features:**
-- Leader key: Space
-- Tree-based file explorer with nvim-tree
-- Buffer tabs with bufferline
-- LSP support with Mason installer
-- Git integration (gitsigns + fugitive)
-- Minimal, focused configuration
-
-### OpenCode Configuration
-
-Location: `opencode/`
-
-Configuration for the OpenCode AI coding assistant with custom behaviors, commands, and reusable skills.
-
-- **AGENTS.md** - Core agent behavior and debugging principles
-- **agents/** - Custom agents (debug, plan)
-- **commands/** - Custom slash commands (commit-all, format-then-lint, review)
-- **skills/** - Reusable skills (good-programming-principles, token-efficiency-opencode)
-
-**Key Principles:**
-- Never lie, deceive, or omit information
-- Always find root cause before fixing issues
-- Apply KISS, DRY, YAGNI, SOLID principles
-- Minimize token usage
-
-### Shell Configuration
-
-Location: `shell/`
-
-Shared shell configuration for bash and zsh with aliases and functions.
-
-- **shared.sh** - Common shell aliases, environment variables, and functions
-- **install.sh** - Installation script that symlinks config and sources it in shell rc files
-
-**Features:**
-- Git aliases (g, gst, gc, gp, gpo)
-- File listing aliases (ll, ls with color)
-- Editor setup (EDITOR=nvim)
-- Fun greeting function using fortune, cowsay, and lolcat
-
 ## Installation
 
 The repository includes a master installation script that can install all configs or specific ones.
