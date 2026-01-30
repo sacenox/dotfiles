@@ -35,7 +35,8 @@ hi Bold cterm=bold
 hi Italic cterm=italic
 hi StatusLine ctermfg=15 ctermbg=8 cterm=NONE
 hi StatusLineNC ctermfg=15 ctermbg=0 cterm=NONE
-hi VertSplit ctermfg=8
+hi VertSplit ctermfg=0 ctermbg=NONE
+hi WinSeparator ctermfg=0 ctermbg=NONE
 hi TabLine ctermfg=7 ctermbg=0
 hi TabLineFill ctermfg=0 ctermbg=NONE
 hi TabLineSel ctermfg=0 ctermbg=11
@@ -208,7 +209,7 @@ hi link @diff.minus diffRemoved
 hi link @diff.delta diffChanged
 
 " nvim-tree colors
-hi NvimTreeNormal ctermfg=15 ctermbg=0
+hi NvimTreeNormal ctermfg=15 ctermbg=NONE
 hi NvimTreeFolderIcon ctermfg=4
 hi NvimTreeFolderName ctermfg=4
 hi NvimTreeOpenedFolderName ctermfg=4
