@@ -30,6 +30,24 @@ Always minimize token usage; avoid verbosity at all times.  Your human partner c
 
 Load and apply the `token-efficiency-opencode` skill to minimize token usage.
 
+## Task tool for exploration
+
+Use the Task tool for ANY exploration spanning 2+ files. This includes:
+- Finding files by pattern or content
+- Understanding how code flows across modules
+- Answering questions about the codebase
+
+NEVER use Glob/Grep/Read directly for open-ended exploration. Delegate to Task agents to keep main context lean.
+
+## Targeted file reads
+
+Before reading a file:
+1. Use Grep to find relevant line numbers first
+2. Use `offset` and `limit` parameters to read only the needed section
+3. Never re-read files already in context
+
+Full-file reads are only acceptable for files under 100 lines or when the entire file is genuinely needed.
+
 ---
 
 # Programming principles

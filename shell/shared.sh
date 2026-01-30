@@ -4,6 +4,9 @@
 # Convenience alias:
 export EDITOR=nvim
 
+alias n=nvim
+alias oc=opencode
+
 alias ll='ls -Fal --color=always'
 alias ls='ls --color=always'
 
