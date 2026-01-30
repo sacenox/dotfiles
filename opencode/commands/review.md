@@ -1,5 +1,5 @@
 ---
-description: Review code with programming principles
+description: Code review with programming principles
 agent: build
 ---
 
