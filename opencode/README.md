@@ -5,7 +5,7 @@ Personal OpenCode configuration with custom agents, slash commands, and skills.
 ## Structure
 
 - **`AGENTS.md`** — Global agent instructions (communication style, debugging principles, efficiency rules)
-- **`agents/`** — Custom agent definitions (debug, thinker)
+- **`agents/`** — Custom agent definitions (debug, plan)
 - **`commands/`** — Slash commands (commit-all, format-then-lint, review)
 - **`skills/`** — Custom skills (good-programming-principles, token-efficiency-opencode)
 - **`install.sh`** — Symlink installer for `~/.config/opencode`
@@ -18,11 +18,11 @@ Personal OpenCode configuration with custom agents, slash commands, and skills.
 
 Read-only during investigation; implements fixes only after completing the four-phase debugging process. No shortcuts permitted.
 
-### Thinker
+### Plan
 **Mode:** Primary  
-**Purpose:** Creative brainstorming and design thinking
+**Purpose:** Read-only planning and design
 
-Read-only agent for exploring ideas, proposing alternatives, and shaping designs before implementation. Asks questions one at a time.
+Read-only agent for scoping work, comparing approaches, and writing plans to `.opencode/plans` before implementation.
 
 ## Commands
 

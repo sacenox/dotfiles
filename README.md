@@ -12,18 +12,19 @@ This repository contains my personal configuration files (dotfiles) for various 
 
 Location: `nvim/`
 
-Modern Neovim setup using Lua and lazy.nvim plugin manager with LSP support, git integration, and a buffer-based file explorer.
+Modern Neovim setup using Lua and lazy.nvim plugin manager with LSP support, git integration, and a tree-based file explorer.
 
 - **init.lua** - Main configuration file with basic settings and keybindings
-- **lua/plugins/** - Plugin configurations (oil, LSP with Mason, gitsigns, diffview, lualine, comment)
+- **lua/plugins/** - Plugin configurations (nvim-tree, bufferline, LSP with Mason, gitsigns, fugitive, lualine, comment)
 - **colors/ansi.vim** - Terminal-respecting 16-color ANSI colorscheme
 - **README.md** - Detailed Neovim setup documentation
 
 **Key Features:**
 - Leader key: Space
-- Buffer-centric workflow with oil.nvim
+- Tree-based file explorer with nvim-tree
+- Buffer tabs with bufferline
 - LSP support with Mason installer
-- Git integration (gitsigns + diffview)
+- Git integration (gitsigns + fugitive)
 - Minimal, focused configuration
 
 ### OpenCode Configuration
@@ -33,7 +34,8 @@ Location: `opencode/`
 Configuration for the OpenCode AI coding assistant with custom behaviors, commands, and reusable skills.
 
 - **AGENTS.md** - Core agent behavior and debugging principles
-- **commands/** - Custom slash commands (commit-all, format-then-lint)
+- **agents/** - Custom agents (debug, plan)
+- **commands/** - Custom slash commands (commit-all, format-then-lint, review)
 - **skills/** - Reusable skills (good-programming-principles, token-efficiency-opencode)
 
 **Key Principles:**

@@ -9,9 +9,10 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
 ├── init.lua              # Main configuration file
 ├── lua/
 │   └── plugins/          # Plugin configurations
-│       ├── oil.lua       # File explorer
+│       ├── nvim-tree.lua # File explorer
+│       ├── bufferline.lua # Buffer tabs
+│       ├── fugitive.lua  # Git commands
 │       ├── lsp.lua       # LSP configuration with Mason
-│       ├── diffview.lua  # Git diff viewer
 │       ├── gitsigns.lua  # Git decorations
 │       ├── comment.lua   # Comment toggling
 │       └── lualine.lua   # Statusline
@@ -23,7 +24,10 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
 ## Plugins
 
 ### File Management
-- **oil.nvim** - Edit your filesystem like a buffer. Press `-` or `<Space>n` to open.
+- **nvim-tree.lua** - Tree-based file explorer. Press `<leader>e` to toggle.
+
+### Buffer Tabs
+- **bufferline.nvim** - VSCode-style buffer tabs with mouse support.
 
 ### Language Server Protocol (LSP)
 - **nvim-lspconfig** - LSP client configuration for Neovim
@@ -31,7 +35,7 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
 - **mason-lspconfig.nvim** - Bridge between mason.nvim and nvim-lspconfig
 
 ### Git Integration
-- **diffview.nvim** - Review git changes, commits, and file history with ease.
+- **vim-fugitive** - Git commands inside Neovim (`:Git`, `:Git diff`).
 - **gitsigns.nvim** - Inline git decorations showing added/changed/deleted lines in the sign column.
 
 ### Editing
@@ -60,9 +64,9 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
    ```
 
 5. Try the file explorer:
-   ```
-   Press <Space>n or -
-   ```
+    ```
+    Press <leader>e
+    ```
 
 6. Try commenting:
    ```
@@ -71,17 +75,19 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
    ```
 
 7. Try git integration (in a git repo):
-   ```
-   Press <Space>dv  (open diffview)
-   Press ]c         (next git change)
-   ```
+    ```
+    Press <leader>d  (git diff via fugitive)
+    Press ]c         (next git change)
+    Press [c         (previous git change)
+    ```
 
 ## Key Features
 
 - **Leader key**: `Space`
 - **LSP support**: Language server protocol with Mason package manager for easy server installation
-- **File explorer**: Buffer-based with oil.nvim (edit filesystem like text)
-- **Git diff viewer**: Comprehensive diff interface with diffview.nvim
+- **File explorer**: Tree-based with nvim-tree (`<leader>e`)
+- **Buffer tabs**: Visual buffer list with bufferline.nvim
+- **Git commands**: Fugitive for `:Git` workflow and quick diffs
 - **Git decorations**: Inline change markers with gitsigns.nvim
 - **Terminal colors**: Uses the `ansi` colorscheme and 16-color theme for lualine, respecting your terminal's color palette
 - **Clean config**: Only essential options, modern Lua syntax
@@ -91,7 +97,7 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
 
 - Minimal and focused - only includes what's needed
 - Modern Neovim defaults - removes redundant settings
-- Buffer-centric workflow - oil.nvim instead of traditional tree explorer
+- Tree-based navigation - nvim-tree with bufferline tabs
 - Git-first - excellent git integration out of the box
 
 ## Customization
@@ -105,8 +111,9 @@ Modern Neovim configuration using Lua and lazy.nvim plugin manager.
 - [lazy.nvim docs](https://github.com/folke/lazy.nvim)
 - [nvim-lspconfig docs](https://github.com/neovim/nvim-lspconfig)
 - [mason.nvim docs](https://github.com/williamboman/mason.nvim)
-- [oil.nvim docs](https://github.com/stevearc/oil.nvim)
-- [diffview.nvim docs](https://github.com/sindrets/diffview.nvim)
+- [nvim-tree docs](https://github.com/nvim-tree/nvim-tree.lua)
+- [bufferline.nvim docs](https://github.com/akinsho/bufferline.nvim)
+- [vim-fugitive docs](https://github.com/tpope/vim-fugitive)
 - [gitsigns.nvim docs](https://github.com/lewis6991/gitsigns.nvim)
 - [Comment.nvim docs](https://github.com/numToStr/Comment.nvim)
 - [lualine.nvim docs](https://github.com/nvim-lualine/lualine.nvim)
