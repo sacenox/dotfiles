@@ -75,6 +75,7 @@ local opts = { noremap = true, silent = true }
 
 -- Search highlighting
 keymap('n', '<leader>h', ':nohlsearch<CR>', opts)
+keymap('n', '<leader>q', ':qall<CR>', { noremap = true, silent = true, desc = 'Quit all' })
 
 -- LSP formatting
 keymap('n', '<leader>f', function()
@@ -84,6 +85,16 @@ end, { noremap = true, silent = true, desc = 'Format buffer with LSP' })
 -- Movement remaps
 keymap('n', 'j', 'gj', { noremap = true })
 keymap('n', 'k', 'gk', { noremap = true })
+
+-- File explorer (nvim-tree)
+keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true, desc = 'Toggle file explorer' })
+
+-- Buffer navigation (bufferline)
+keymap('n', '<leader>[', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true, desc = 'Previous buffer' })
+keymap('n', '<leader>]', ':BufferLineCycleNext<CR>', { noremap = true, silent = true, desc = 'Next buffer' })
+
+-- Git (fugitive)
+keymap('n', '<leader>d', ':Git ++curwin --paginate diff<CR>', { noremap = true, silent = true, desc = 'Git diff' })
 
 -- Command aliases
 vim.api.nvim_create_user_command('Q', 'q', {})

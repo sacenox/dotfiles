@@ -10,7 +10,7 @@ return {
     require('nvim-tree').setup({
       -- Open tree on startup
       view = {
-        width = 30,
+        width = 22,
         side = 'left',
       },
       -- Git integration
@@ -48,13 +48,5 @@ return {
       },
     })
 
-    -- Keybinding to toggle tree
-    vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true, desc = 'Toggle file explorer' })
-
-    -- Auto-open on startup
-    local function open_nvim_tree()
-      require('nvim-tree.api').tree.open()
-    end
-    vim.api.nvim_create_autocmd({ 'VimEnter' }, { callback = open_nvim_tree })
   end,
 }
