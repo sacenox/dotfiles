@@ -206,3 +206,17 @@ hi link @markup.list Special
 hi link @diff.plus diffAdded
 hi link @diff.minus diffRemoved
 hi link @diff.delta diffChanged
+
+" nvim-tree colors
+hi NvimTreeNormal ctermfg=15 ctermbg=0
+hi NvimTreeFolderIcon ctermfg=4
+hi NvimTreeFolderName ctermfg=4
+hi NvimTreeOpenedFolderName ctermfg=4
+hi NvimTreeGitDirty ctermfg=3
+hi NvimTreeGitStaged ctermfg=2
+hi NvimTreeGitDeleted ctermfg=1
+hi NvimTreeGitNew ctermfg=6
+hi NvimTreeGitIgnored ctermfg=8
+hi NvimTreeSpecialFile ctermfg=13 cterm=underline
+hi NvimTreeSymlink ctermfg=6 cterm=italic
+hi NvimTreeRootFolder ctermfg=11 cterm=bold

@@ -41,6 +41,9 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 
+-- Statusline settings
+vim.opt.showmode = false -- Don't show mode in command line (lualine shows it)
+
 -- Set leader key to space (must be set before lazy.nvim)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -69,12 +72,6 @@ require('lazy').setup('plugins', {
 -- Keymaps
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
-
--- Buffer navigation
-keymap('n', '<leader>]', ':bnext<CR>', opts)
-keymap('n', '<leader>[', ':bprev<CR>', opts)
-keymap('n', '<leader>e', ':e#<CR>', opts)
-keymap('n', '<leader>x', ':bdelete<CR>', opts)
 
 -- Search highlighting
 keymap('n', '<leader>h', ':nohlsearch<CR>', opts)
