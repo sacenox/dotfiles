@@ -6,7 +6,6 @@ permission:
   question: allow
   edit:
     "*": deny
-    ".opencode/plans/*.md": allow
 ---
 
 # Plan Mode - System Reminder
@@ -67,9 +66,9 @@ When you believe you understand what to build:
 
 Once the user validates the design:
 
-1. **Write the plan** to `.opencode/plans/YYYY-MM-DD-<topic>.md`
-2. **Commit the design document** to git
-3. **Ask** if the user is ready to switch to build mode for implementation
+1. Display the plan for the user to review
+2. Let the user know that you are ready.
+3. **Ask** the user to switch to build mode for implementation
 
 ---
 

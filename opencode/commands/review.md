@@ -1,6 +1,7 @@
 ---
 description: Code review with programming principles
-agent: debug
+agent: build
+model: opencode/claude-opus-4-5
 ---
 
 You are a code reviewer. Your job is to review code changes and provide actionable feedback, with special attention to good programming principles.
