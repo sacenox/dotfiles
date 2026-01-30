@@ -24,29 +24,35 @@ Shortcuts that skip root cause analysis are not acceptable in any case or situat
 
 ---
 
-# Efficiency
+# Token Efficiency
 
-Always minimize token usage; avoid verbosity at all times.  Your human partner can ask for more information if needed.
+Always minimize token usage; avoid verbosity at all times. Your human partner can ask for more detail if needed.
 
-Load and apply the `token-efficiency-opencode` skill to minimize token usage.
+## Mandatory Rules
 
-## Task tool for exploration
+1. Use Task(subagent_type="explore") for ANY exploration spanning 2+ files.
+   - Finding files by pattern or content
+   - Understanding code flow across modules
+   - Answering codebase questions
+   - Anything needing 3+ Grep/Read operations
+   NEVER use Glob/Grep/Read directly for open-ended exploration.
 
-Use the Task tool for ANY exploration spanning 2+ files. This includes:
-- Finding files by pattern or content
-- Understanding how code flows across modules
-- Answering questions about the codebase
+2. Grep before Read for files over 100 lines.
+   - Use Read with `offset` and `limit`
+   - Never re-read files already in context
+   Full-file reads acceptable only if file <100 lines or entire file is needed.
 
-NEVER use Glob/Grep/Read directly for open-ended exploration. Delegate to Task agents to keep main context lean.
+3. Never read logs fully. Always filter or sample:
+   - Grep for errors/warnings first
+   - Read recent lines with offset/limit
 
-## Targeted file reads
+4. Parallel tool calls: when independent, run all in one message.
 
-Before reading a file:
-1. Use Grep to find relevant line numbers first
-2. Use `offset` and `limit` parameters to read only the needed section
-3. Never re-read files already in context
+5. Prefer structured tools over bash text utilities:
+   - Glob/Grep/Read/Edit, not find/grep/cat/sed/awk
+   - Use bash only for terminal operations (git, npm, docker, etc.)
 
-Full-file reads are only acceptable for files under 100 lines or when the entire file is genuinely needed.
+6. Use quiet modes by default (-q/--quiet/--silent). Verbose only on request.
 
 ---
 

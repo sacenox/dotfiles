@@ -1,6 +1,7 @@
 ---
 description: Plan mode. Disallows all edit tools.
 mode: primary
+model: opencode/claude-opus-4-5
 permission:
   question: allow
   edit:
