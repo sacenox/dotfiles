@@ -1,12 +1,11 @@
 ---
 description: Systematic debugging of bugs, test failures, and unexpected behavior using root cause analysis
-mode: subagent
-model: anthropic/claude-opus-4-20250514
+mode: all
 temperature: 0.1
 maxSteps: 20
 tools:
-  write: false
-  edit: false
+  write: true
+  edit: true
 permission:
   bash:
     "*": "ask"

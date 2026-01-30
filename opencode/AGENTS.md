@@ -22,8 +22,6 @@ Core principle: ALWAYS find the root cause before attempting fixes. Symptom fixe
 
 Shortcuts that skip root cause analysis are not acceptable in any case or situation.
 
-If you have the `Systematic Debugging` skill installed (check the skills available to you), use it for debugging or fixing issues.
-
 ---
 
 # Efficiency
