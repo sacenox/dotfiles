@@ -24,6 +24,12 @@ Read-only during investigation; implements fixes only after completing the four-
 
 Read-only agent for scoping work, comparing approaches, and writing plans to `.opencode/plans` before implementation.
 
+### Blog Writer
+**Mode:** All (subagent)  
+**Purpose:** Personal, informal blog post drafts
+
+Writes ~500 word markdown posts from topics or provided resources, and always includes a Sources section.
+
 ## Commands
 
 - **`/commit-all`** — Stage all changes and create a commit
