@@ -23,7 +23,7 @@ done
 for item in "$repo_dir/skills"/*; do
   if [ -d "$item" ]; then
     target="$skills_dir/$(basename "$item")"
-    ln -sf "$item" "$target"
+    ln -sfn "$item" "$target"
   fi
 done
 
