@@ -1,26 +1,40 @@
 ---
-name: commit-all
 description: Stage and commit all changes with a generated message
+subtask: true
+model: opencode/claude-haiku-4-5
 ---
 
-Run the following steps to stage and commit the code. If you want formatting and linting, run `/format-then-lint` first.
+Use the context below, then follow the steps.
+
+Working tree:
+!`git status --short`
+
+Change summary:
+!`git diff --stat`
+
+Recent commits:
+!`git log --oneline -10`
 
 **IMPORTANT**: This command stages and commits ALL changes in the working directory. Do not cherry-pick or selectively stage files unless there are sensitive files (credentials, secrets) that should not be committed. Stage everything with `git add .` as instructed.
 
-1.  **Stage Changes**:
-    - Run `git add .` to stage all modified and untracked files.
-    - Do not selectively stage only some files - stage everything unless there are security concerns.
+1.  **Safety Preflight**:
+    - Review the **Working tree** section above and ensure no sensitive files are present (e.g., `.env`, credentials, keys).
+    - If anything looks sensitive or uncertain, STOP and ask the user how to proceed before staging.
 
-2.  **Generate Commit**:
-    - Analyze the staged changes (using `git diff --cached` if necessary to understand the context).
-    - Draft a concise, descriptive commit message following the **Conventional Commits** specification (e.g., `feat: add search`, `fix: handle null url`).
+2.  **Stage Changes**:
+    - If the **Working tree** section above shows no changes, report and stop (do not create an empty commit).
+    - Run `git add .` to stage all modified and untracked files.
+
+3.  **Generate Commit**:
+    - Analyze the staged changes (use `git diff --cached` if needed, the context at the start of the document should be enough).
+    - Draft a concise, descriptive commit message following **Conventional Commits** (e.g., `feat: add search`, `fix: handle null url`).
     - Create the commit using `git commit -m "..."`.
 
-3.  **Handle Pre-commit Hook Failures**:
-    - If the commit fails due to pre-commit hooks (e.g., lint checks, formatting checks, tests):
-      - Report the error output clearly to the user
-      - Ask the user how they would like to proceed (e.g., fix the issues automatically, skip hooks, or abort)
-    - Report all other errors or unexpected output to the user and ask for next steps.
+4.  **Handle Pre-commit Hook Failures**:
+    - If hooks fail, report the error output clearly and ask how to proceed.
+    - If hooks modify files and the commit fails, re-stage and retry once; otherwise ask for next steps.
+    - Report all other errors or unexpected output and ask for next steps.
 
-4.  **Report**:
-    - Output the result of the commit operation.
+5.  **Report**:
+    - Output the result of the commit operation and final `git status --short`.
+    - Don't enumerate steps from this document, avoid saying "Used Conventional Commits" for exmaple.
