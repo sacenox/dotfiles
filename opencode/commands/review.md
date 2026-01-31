@@ -1,6 +1,7 @@
 ---
 description: Code review with programming principles
 agent: build
+subtask: true
 model: opencode/claude-opus-4-5
 ---
 

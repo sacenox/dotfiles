@@ -1,7 +1,6 @@
 ---
 description: Systematic debugging of bugs, test failures, and unexpected behavior using root cause analysis
-mode: all
-model: opencode/claude-opus-4-5
+mode: primary
 temperature: 0.1
 maxSteps: 20
 tools:

@@ -1,6 +1,7 @@
 ---
-name: format-then-lint
 description: Detect and run formatting then linting commands
+subtask: true
+model: opencode/claude-haiku-4-5
 ---
 
 Run the following steps to format and lint the code:
