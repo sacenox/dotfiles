@@ -10,6 +10,7 @@ repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 mkdir -p "$config_dir" "$commands_dir" "$skills_dir" "$agents_dir"
 
+ln -sf "$repo_dir/opencode.json" "$config_dir/opencode.json"
 ln -sf "$repo_dir/AGENTS.md" "$config_dir/AGENTS.md"
 ln -sfn "$repo_dir/.agent-docs" "$config_dir/.agent-docs"
 
