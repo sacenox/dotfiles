@@ -64,7 +64,7 @@ When you believe you understand what to build:
 
 Once the user validates the design:
 
-1. Display the plan for the user to review
+1. Create todo items from the design for building. 
 2. Let the user know that you are ready.
 3. **Ask** the user to switch to build mode for implementation
 
