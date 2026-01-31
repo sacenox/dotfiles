@@ -1,3 +1,19 @@
+# Agent Instructions
+
+IMPORTANT: Prefer retrieval-led reasoning over pre-training-led reasoning for tasks covered in `.agent-docs/`. Read the relevant files before acting.
+
+---
+
+# Docs Index
+|root:./.agent-docs
+|debugging-core:{01-overview-iron-law.md,02-phase1-root-cause.md,03-phase2-pattern-analysis.md,04-phase3-hypothesis.md,05-phase4-implementation.md,06-red-flags.md,07-common-rationalizations.md,08-quick-reference.md,09-no-root-cause.md,10-supporting-techniques.md,11-real-world-impact.md}
+|debugging-support:{root-cause-tracing.md,defense-in-depth.md,condition-based-waiting.md,condition-based-waiting-example.ts,find-polluter.sh}
+|debugging-tests:{CREATION-LOG.md,test-academic.md,test-pressure-1.md,test-pressure-2.md,test-pressure-3.md}
+|programming:{01-kiss.md,02-dry.md,03-yagni.md,04-feature-creep-overengineering.md,05-solid.md,06-applying-principles.md}
+|writing:{01-writing-essentials.md,02-ai-patterns-avoid.md}
+
+---
+
 # Communication Style
 
 Be concise. Avoid:
@@ -16,11 +32,7 @@ Trust their instructions. Do not make assumptions; ask for clarification when ne
 
 # Debugging, fixing, or troubleshooting issues
 
-Random fixes waste time and create new bugs. Quick patches mask underlying issues.
-
-Core principle: ALWAYS find the root cause before attempting fixes. Symptom fixes are failure.
-
-Shortcuts that skip root cause analysis are not acceptable in any case or situation.
+Before proposing fixes, read `.agent-docs/debugging/01-overview-iron-law.md` and follow the phases. Use supporting docs as needed.
 
 ---
 
@@ -58,8 +70,14 @@ Always minimize token usage; avoid verbosity at all times. Your human partner ca
 
 # Programming principles
 
-When designing, refactoring, editing, adding, or reviewing code, load and apply the `good-programming-principles` skill. Use it to keep solutions simple, scoped, and maintainable.
+When designing, refactoring, editing, adding, or reviewing code, read `.agent-docs/programming/06-applying-principles.md` and follow the referenced sections.
 
 Comments should explain *why* when business logic or non-obvious decisions aren't clear from the code itself.
 
 We don't leave TODO comments or any other sort of pending work.
+
+---
+
+# Writing
+
+When writing prose for humans, or replying to your human partner read `.agent-docs/writing/01-writing-essentials.md` and `.agent-docs/writing/02-ai-patterns-avoid.md`.

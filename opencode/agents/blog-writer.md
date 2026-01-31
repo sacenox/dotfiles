@@ -1,7 +1,7 @@
 ---
 description: Write short blog posts in a personal, informal style from topics or resources
-mode: all
-model: opencode/claude-sonnet-4-20250514
+mode: subagent
+model: opencode/claude-sonnet-4
 temperature: 0.7
 maxSteps: 15
 tools:

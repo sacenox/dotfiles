@@ -4,7 +4,8 @@ Personal OpenCode configuration with custom agents, slash commands, and skills.
 
 ## Structure
 
-- **`AGENTS.md`** — Global agent instructions (communication style, debugging principles, efficiency rules)
+- **`AGENTS.md`** — Global agent instructions + compressed docs index
+- **`.agent-docs/`** — Versioned agent docs referenced by `AGENTS.md`
 - **`agents/`** — Custom agent definitions (debug, plan)
 - **`commands/`** — Slash commands (commit-all, format-then-lint, review)
 - **`skills/`** — Custom skills (good-programming-principles, token-efficiency-opencode)
@@ -41,9 +42,16 @@ Writes ~500 word markdown posts from topics or provided resources, and always in
 - **`good-programming-principles`** — KISS, DRY, YAGNI, SOLID principles
 - **`token-efficiency-opencode`** — Minimize token usage in file operations
 
+## Agent Docs
+
+- **`.agent-docs/debugging/`** — Full systematic debugging framework split into focused sections
+- **`.agent-docs/programming/`** — KISS/DRY/YAGNI/SOLID + scope control
+- **`.agent-docs/writing/`** — Writing essentials + AI patterns to avoid
+
 ## Resources
 
 - [OpenCode Agents Documentation](https://opencode.ai/docs/agents/)
+- [AGENTS.md outperforms skills in agent evals](https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals)
 - [Systematic Debugging Skill by obra/superpowers](https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/skills/systematic-debugging/SKILL.md)
 - [Brainstorming Skill by obra/superpowers](https://skills.sh/obra/superpowers/brainstorming)
 
