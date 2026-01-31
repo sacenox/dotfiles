@@ -18,4 +18,4 @@ Trust their instructions. Do not make assumptions; ask for clarification when ne
 Always minimize token usage; avoid verbosity at all times. Your human partner can ask for more detail if needed.
 Search before reading files. Always use limits when reading files.
 Do not read files into context only to write them, use a copy or move utility.
-Use utilitie quiet modes by default (-q/--quiet/--silent). Verbose only on request.
+Use utilities quiet modes by default (-q/--quiet/--silent). Verbose only on request.
