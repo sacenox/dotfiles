@@ -1,23 +1,21 @@
 # OpenCode config
 
-Personal OpenCode configuration with custom agents, slash commands, and skills.
+Personal OpenCode configuration with custom agents and slash commands.
 
 ## Structure
 
-- **`AGENTS.md`** — Global agent instructions + compressed docs index
-- **`.agent-docs/`** — Versioned agent docs referenced by `AGENTS.md`
-- **`agents/`** — Custom agent definitions (debug, plan)
+- **`AGENTS.md`** — Global agent instructions
+- **`agents/`** — Custom agent definitions (debug, plan, writer)
 - **`commands/`** — Slash commands (commit-all, format-then-lint, review)
-- **`skills/`** — Custom skills (good-programming-principles, token-efficiency-opencode)
 - **`install.sh`** — Symlink installer for `~/.config/opencode`
 
 ## Agents
 
 ### Debug
-**Mode:** All (primary + subagent)  
+**Mode:** Primary  
 **Purpose:** Systematic debugging using root cause analysis
 
-Read-only during investigation; implements fixes only after completing the four-phase debugging process. No shortcuts permitted.
+Enforces a four-phase debugging process and requires TodoWrite tracking. No fixes before root cause analysis.
 
 ### Plan
 **Mode:** Primary  
@@ -25,8 +23,8 @@ Read-only during investigation; implements fixes only after completing the four-
 
 Read-only agent for scoping work, comparing approaches, and writing plans to `.opencode/plans` before implementation.
 
-### Blog Writer
-**Mode:** All (subagent)  
+### Writer
+**Mode:** Subagent  
 **Purpose:** Personal, informal blog post drafts
 
 Writes ~500 word markdown posts from topics or provided resources, and always includes a Sources section.
@@ -37,23 +35,9 @@ Writes ~500 word markdown posts from topics or provided resources, and always in
 - **`/format-then-lint`** — Run formatter followed by linter
 - **`/review`** — Review code changes before committing
 
-## Skills
-
-- **`good-programming-principles`** — KISS, DRY, YAGNI, SOLID principles
-- **`token-efficiency-opencode`** — Minimize token usage in file operations
-
-## Agent Docs
-
-- **`.agent-docs/debugging/`** — Full systematic debugging framework split into focused sections
-- **`.agent-docs/programming/`** — KISS/DRY/YAGNI/SOLID + scope control
-- **`.agent-docs/writing/`** — Writing essentials + AI patterns to avoid
-
 ## Resources
 
 - [OpenCode Agents Documentation](https://opencode.ai/docs/agents/)
-- [AGENTS.md outperforms skills in agent evals](https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals)
-- [Systematic Debugging Skill by obra/superpowers](https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/skills/systematic-debugging/SKILL.md)
-- [Brainstorming Skill by obra/superpowers](https://skills.sh/obra/superpowers/brainstorming)
 
 ## Usage
 
