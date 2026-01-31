@@ -4,18 +4,9 @@ mode: subagent
 model: opencode/claude-sonnet-4
 temperature: 0.7
 maxSteps: 15
-tools:
-  write: false
-  edit: false
 permission:
-  bash:
+  edit:
     "*": deny
-  task:
-    "explore": allow
-    "*": deny
-  webfetch: allow
-  websearch: allow
-  codesearch: allow
 ---
 
 # Blog Writer Agent

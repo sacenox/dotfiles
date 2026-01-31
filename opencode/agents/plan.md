@@ -2,7 +2,6 @@
 description: Plan mode. Disallows all edit tools.
 mode: primary
 permission:
-  question: allow
   edit:
     "*": deny
 ---
