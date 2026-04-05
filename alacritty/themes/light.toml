@@ -1,0 +1,32 @@
+# 0x96f-inspired light theme
+
+[window]
+decorations_theme_variant = "Light"
+
+[colors.primary]
+background = '#fafafa'
+foreground = '#2a2a2a'
+
+[colors.cursor]
+text = '#fafafa'
+cursor = '#2a2a2a'
+
+[colors.normal]
+black   = '#2a2a2a'
+red     = '#d1364e'
+green   = '#6ea226'
+yellow  = '#c08a19'
+blue    = '#2b8db3'
+magenta = '#7c5ec1'
+cyan    = '#2b9da4'
+white   = '#fafafa'
+
+[colors.bright]
+black   = '#6a6a6a'
+red     = '#e05265'
+green   = '#8fbf44'
+yellow  = '#d9a53e'
+blue    = '#4da8cc'
+magenta = '#9579d1'
+cyan    = '#4db5b5'
+white   = '#ffffff'

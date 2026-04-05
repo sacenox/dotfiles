@@ -24,10 +24,13 @@ function greet() {
   local cows=(
     "default" "flaming-sheep" "fox" "llama" "sheep" "skeleton" "three-eyes" "tux" "udder" "www"
   )
-  local cow=${cows[$RANDOM % ${#cows[@]}]:-"default"}
-  fortune -s | cowsay -f $cow -W 80 | lolcat -p 1.0 -F 0.06 -S $(echo $RANDOM)
-  # echo "\n cow: $cow" | lolcat -p 1.0 -F 0.06 -S $(echo $RANDOM)  # Show the cow used
+  local count=${#cows[@]}
+  local idx
+  if [ -n "${ZSH_VERSION:-}" ]; then
+    idx=$((RANDOM % count + 1))
+  else
+    idx=$((RANDOM % count))
+  fi
+  local cow=${cows[$idx]:-"default"}
+  fortune -s | cowsay -f "$cow" -W 80 | lolcat -p 1.0 -F 0.06 -S "$RANDOM"
 }
-
-# Run the greeting function
-greet

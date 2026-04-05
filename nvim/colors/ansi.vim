@@ -1,7 +1,10 @@
 " https://hamvocke.com/blog/ansi-vim-color-scheme/
-set background=dark
+" Supports both dark and light backgrounds via terminal ANSI colors.
 
 hi clear
+if exists('syntax_on')
+  syntax reset
+endif
 
 let g:colors_name = 'ansi'
 set notermguicolors
@@ -27,63 +30,39 @@ set notermguicolors
 " (if your terminal and font support it), bold, reverse, underlined, etc.
 " See ':help attr-list' for possible options.
 
-" Editor Elements
-hi NonText ctermfg=0
+" Editor Elements — background-adaptive
+" Uses 0/15 (black/white) which swap roles depending on terminal theme.
+hi NonText ctermfg=8
 hi Ignore ctermfg=NONE  ctermbg=NONE cterm=NONE
 hi Underlined cterm=underline
 hi Bold cterm=bold
 hi Italic cterm=italic
-hi StatusLine ctermfg=15 ctermbg=8 cterm=NONE
-hi StatusLineNC ctermfg=15 ctermbg=0 cterm=NONE
-hi VertSplit ctermfg=0 ctermbg=NONE
-hi WinSeparator ctermfg=0 ctermbg=NONE
-hi TabLine ctermfg=7 ctermbg=0
-hi TabLineFill ctermfg=0 ctermbg=NONE
-hi TabLineSel ctermfg=0 ctermbg=11
 hi Title ctermfg=4 cterm=bold
-hi CursorLine ctermbg=0 ctermfg=NONE
-hi Cursor ctermbg=15 ctermfg=0
-hi CursorColumn ctermbg=0
 hi LineNr ctermfg=8
 hi CursorLineNr ctermfg=6
 hi helpLeadBlank ctermbg=NONE ctermfg=NONE
 hi helpNormal ctermbg=NONE ctermfg=NONE
-hi Visual ctermbg=8 ctermfg=15 cterm=bold
-hi VisualNOS ctermbg=8 ctermfg=15 cterm=bold
-hi Pmenu ctermbg=0 ctermfg=15
-hi PmenuSbar ctermbg=8 ctermfg=7
-hi PmenuSel ctermbg=8 ctermfg=15 cterm=bold
-hi PmenuThumb ctermbg=7 ctermfg=NONE
 hi FoldColumn ctermfg=7
 hi Folded ctermfg=12
-hi WildMenu ctermbg=0 ctermfg=15 cterm=NONE
-hi SpecialKey ctermfg=0
-hi IncSearch ctermbg=1 ctermfg=0
-hi CurSearch ctermbg=3 ctermfg=0
-hi Search ctermbg=11 ctermfg=0
-hi Directory ctermfg=4
-hi MatchParen ctermbg=0 ctermfg=3 cterm=underline
 hi SpellBad cterm=undercurl
 hi SpellCap cterm=undercurl
 hi SpellLocal cterm=undercurl
 hi SpellRare cterm=undercurl
-hi ColorColumn ctermbg=8
 hi SignColumn ctermfg=7
-hi ModeMsg ctermbg=15 ctermfg=0 cterm=bold
 hi MoreMsg ctermfg=4
 hi Question ctermfg=4
-hi QuickFixLine ctermbg=0 ctermfg=14
 hi Conceal ctermfg=8
-hi ToolbarLine ctermbg=0 ctermfg=15
-hi ToolbarButton ctermbg=8 ctermfg=15
 hi debugPC ctermfg=7
 hi debugBreakpoint ctermfg=8
 hi ErrorMsg ctermfg=1 cterm=bold,italic
 hi WarningMsg ctermfg=11
-hi DiffAdd ctermbg=10 ctermfg=0
-hi DiffChange ctermbg=12 ctermfg=0
-hi DiffDelete ctermbg=9 ctermfg=0
-hi DiffText ctermbg=14 ctermfg=0
+hi Directory ctermfg=4
+hi SpecialKey ctermfg=8
+hi IncSearch ctermbg=1 ctermfg=0
+hi CurSearch ctermbg=3 ctermfg=0
+hi Search ctermbg=11 ctermfg=0
+hi MatchParen ctermbg=NONE ctermfg=3 cterm=underline,bold
+hi ColorColumn ctermbg=8
 hi diffAdded ctermfg=10
 hi diffRemoved ctermfg=9
 hi diffChanged ctermfg=12
@@ -95,6 +74,60 @@ hi diffIndexLine ctermfg=14
 hi healthError ctermfg=1
 hi healthSuccess ctermfg=2
 hi healthWarning ctermfg=3
+
+if &background ==# 'dark'
+  hi StatusLine ctermfg=15 ctermbg=8 cterm=NONE
+  hi StatusLineNC ctermfg=15 ctermbg=0 cterm=NONE
+  hi VertSplit ctermfg=0 ctermbg=NONE
+  hi WinSeparator ctermfg=0 ctermbg=NONE
+  hi TabLine ctermfg=7 ctermbg=0
+  hi TabLineFill ctermfg=0 ctermbg=NONE
+  hi TabLineSel ctermfg=0 ctermbg=11
+  hi CursorLine ctermbg=0 ctermfg=NONE
+  hi Cursor ctermbg=15 ctermfg=0
+  hi CursorColumn ctermbg=0
+  hi Visual ctermbg=8 ctermfg=15 cterm=bold
+  hi VisualNOS ctermbg=8 ctermfg=15 cterm=bold
+  hi Pmenu ctermbg=0 ctermfg=15
+  hi PmenuSbar ctermbg=8 ctermfg=7
+  hi PmenuSel ctermbg=8 ctermfg=15 cterm=bold
+  hi PmenuThumb ctermbg=7 ctermfg=NONE
+  hi WildMenu ctermbg=0 ctermfg=15 cterm=NONE
+  hi QuickFixLine ctermbg=0 ctermfg=14
+  hi ModeMsg ctermbg=15 ctermfg=0 cterm=bold
+  hi ToolbarLine ctermbg=0 ctermfg=15
+  hi ToolbarButton ctermbg=8 ctermfg=15
+  hi DiffAdd ctermbg=10 ctermfg=0
+  hi DiffChange ctermbg=12 ctermfg=0
+  hi DiffDelete ctermbg=9 ctermfg=0
+  hi DiffText ctermbg=14 ctermfg=0
+else
+  hi StatusLine ctermfg=0 ctermbg=7 cterm=NONE
+  hi StatusLineNC ctermfg=8 ctermbg=7 cterm=NONE
+  hi VertSplit ctermfg=7 ctermbg=NONE
+  hi WinSeparator ctermfg=7 ctermbg=NONE
+  hi TabLine ctermfg=8 ctermbg=7
+  hi TabLineFill ctermfg=7 ctermbg=NONE
+  hi TabLineSel ctermfg=15 ctermbg=4
+  hi CursorLine ctermbg=7 ctermfg=NONE
+  hi Cursor ctermbg=0 ctermfg=15
+  hi CursorColumn ctermbg=7
+  hi Visual ctermbg=7 ctermfg=0 cterm=bold
+  hi VisualNOS ctermbg=7 ctermfg=0 cterm=bold
+  hi Pmenu ctermbg=7 ctermfg=0
+  hi PmenuSbar ctermbg=7 ctermfg=8
+  hi PmenuSel ctermbg=8 ctermfg=15 cterm=bold
+  hi PmenuThumb ctermbg=8 ctermfg=NONE
+  hi WildMenu ctermbg=7 ctermfg=0 cterm=NONE
+  hi QuickFixLine ctermbg=7 ctermfg=4
+  hi ModeMsg ctermbg=0 ctermfg=15 cterm=bold
+  hi ToolbarLine ctermbg=7 ctermfg=0
+  hi ToolbarButton ctermbg=8 ctermfg=15
+  hi DiffAdd ctermbg=2 ctermfg=15
+  hi DiffChange ctermbg=4 ctermfg=15
+  hi DiffDelete ctermbg=1 ctermfg=15
+  hi DiffText ctermbg=6 ctermfg=0
+endif
 
 " Syntax
 hi Comment ctermfg=8 cterm=italic
@@ -209,7 +242,7 @@ hi link @diff.minus diffRemoved
 hi link @diff.delta diffChanged
 
 " nvim-tree colors
-hi NvimTreeNormal ctermfg=15 ctermbg=NONE
+hi NvimTreeNormal ctermfg=NONE ctermbg=NONE
 hi NvimTreeFolderIcon ctermfg=4
 hi NvimTreeFolderName ctermfg=4
 hi NvimTreeOpenedFolderName ctermfg=4

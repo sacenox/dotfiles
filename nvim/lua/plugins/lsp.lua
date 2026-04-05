@@ -4,7 +4,8 @@ return {
   {
     'williamboman/mason.nvim',
     config = function()
-      require('mason').setup({
+      local mason = require('mason')
+      mason.setup({
         ui = {
           border = 'single',
           icons = {
@@ -14,33 +15,16 @@ return {
           }
         }
       })
-    end,
-  },
-
-  -- Mason-lspconfig: Bridge between mason and lspconfig
-  {
-    'williamboman/mason-lspconfig.nvim',
-    dependencies = { 'williamboman/mason.nvim' },
-    config = function()
-      require('mason-lspconfig').setup({
-        -- Automatically install these language servers
-        ensure_installed = {},
-        -- Auto-install servers configured in lspconfig
-        automatic_installation = false,
-      })
-    end,
-  },
-
-  -- LSP configurations
-  {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-    },
-    config = function()
-      local lspconfig = require('lspconfig')
-
+      
+      -- Auto-install language servers and formatters if not present
+      local mason_registry = require('mason-registry')
+      local packages = { 'gopls', 'marksman', 'prettier' }
+      
+      for _, package in ipairs(packages) do
+        if not mason_registry.is_installed(package) then
+          vim.cmd('MasonInstall ' .. package)
+        end
+      end
       -- LSP keybindings (only active when LSP is attached)
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -68,31 +52,75 @@ return {
       -- Default server capabilities
       local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-      -- Setup language servers here
+      -- Setup language servers using vim.lsp.config
+      
+      -- Go language server
+      vim.lsp.config.gopls = {
+        cmd = { 'gopls' },
+        filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+        root_markers = { 'go.work', 'go.mod', '.git' },
+        capabilities = capabilities,
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+          },
+        },
+      }
+      vim.lsp.enable('gopls')
+
+      -- Markdown language server
+      vim.lsp.config.marksman = {
+        cmd = { 'marksman', 'server' },
+        filetypes = { 'markdown', 'markdown.mdx' },
+        root_markers = { '.git', '.marksman.toml' },
+        capabilities = capabilities,
+      }
+      vim.lsp.enable('marksman')
+      
       -- Example configurations (uncomment and modify as needed):
       
-      -- lspconfig.lua_ls.setup({
+      -- vim.lsp.config.lua_ls = {
+      --   cmd = { 'lua-language-server' },
+      --   filetypes = { 'lua' },
+      --   root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git' },
       --   capabilities = capabilities,
       --   settings = {
       --     Lua = {
       --       diagnostics = {
-      --         globals = { 'vim' }, -- Recognize 'vim' global
+      --         globals = { 'vim' },
       --       },
       --     },
       --   },
-      -- })
+      -- }
+      -- vim.lsp.enable('lua_ls')
 
-      -- lspconfig.ts_ls.setup({
+      -- vim.lsp.config.ts_ls = {
+      --   cmd = { 'typescript-language-server', '--stdio' },
+      --   filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+      --   root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
       --   capabilities = capabilities,
-      -- })
+      -- }
+      -- vim.lsp.enable('ts_ls')
 
-      -- lspconfig.pyright.setup({
+      -- vim.lsp.config.pyright = {
+      --   cmd = { 'pyright-langserver', '--stdio' },
+      --   filetypes = { 'python' },
+      --   root_markers = { 'pyrightconfig.json', 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
       --   capabilities = capabilities,
-      -- })
+      -- }
+      -- vim.lsp.enable('pyright')
 
-      -- lspconfig.rust_analyzer.setup({
+      -- vim.lsp.config.rust_analyzer = {
+      --   cmd = { 'rust-analyzer' },
+      --   filetypes = { 'rust' },
+      --   root_markers = { 'Cargo.toml', 'rust-project.json', '.git' },
       --   capabilities = capabilities,
-      -- })
+      -- }
+      -- vim.lsp.enable('rust_analyzer')
     end,
-  },
+  }
 }

@@ -76,11 +76,40 @@ local opts = { noremap = true, silent = true }
 -- Search highlighting
 keymap('n', '<leader>h', ':nohlsearch<CR>', opts)
 keymap('n', '<leader>q', ':qall<CR>', { noremap = true, silent = true, desc = 'Quit all' })
+keymap('n', '<leader>s', ':write<CR>', { noremap = true, silent = true, desc = 'Save buffer' })
+keymap('n', '<leader>S', ':wall<CR>', { noremap = true, silent = true, desc = 'Save all buffers' })
 
 -- LSP formatting
 keymap('n', '<leader>f', function()
   vim.lsp.buf.format({ async = true })
-end, { noremap = true, silent = true, desc = 'Format buffer with LSP' })
+end, { noremap = true, silent = true, desc = 'Format with LSP' })
+
+-- Prettier formatting
+keymap('n', '<leader>F', function()
+  local prettier_path = vim.fn.stdpath('data') .. '/mason/bin/prettier'
+  if vim.fn.executable(prettier_path) == 1 then
+    local bufnr = vim.api.nvim_get_current_buf()
+    local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+    local content = table.concat(lines, '\n')
+    
+    vim.fn.jobstart({ prettier_path, '--stdin-filepath', vim.api.nvim_buf_get_name(bufnr) }, {
+      stdout_buffered = true,
+      on_stdout = function(_, data)
+        if data then
+          vim.schedule(function()
+            local formatted = table.concat(data, '\n'):gsub('\n$', '')
+            local new_lines = vim.split(formatted, '\n')
+            vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
+            print('Formatted with prettier')
+          end)
+        end
+      end,
+      stdin = content,
+    })
+  else
+    print('Prettier not found. Run :Mason to install it.')
+  end
+end, { noremap = true, silent = false, desc = 'Format with Prettier' })
 
 -- Movement remaps
 keymap('n', 'j', 'gj', { noremap = true })
@@ -102,6 +131,14 @@ vim.api.nvim_create_user_command('W', 'w', {})
 
 -- Colorscheme
 vim.cmd.colorscheme('ansi')
+
+-- Re-apply colorscheme when background changes (dark/light switch)
+vim.api.nvim_create_autocmd('OptionSet', {
+    pattern = 'background',
+    callback = function()
+        vim.cmd.colorscheme('ansi')
+    end,
+})
 
 -- Override diff highlight groups to remove backgrounds (keep only sign column indicators)
 vim.api.nvim_set_hl(0, 'DiffAdd', { ctermbg = 'NONE', ctermfg = 'NONE' })

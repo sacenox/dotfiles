@@ -1,30 +1,14 @@
--- Standard ANSI color hex values
--- These represent typical ANSI colors but will adapt to your terminal's palette
-local colors = {
-  black = '#000000',
-  red = '#800000',
-  green = '#008000',
-  yellow = '#808000',
-  blue = '#000080',
-  magenta = '#800080',
-  cyan = '#008080',
-  white = '#c0c0c0',
-  bright_black = '#808080',
-  bright_red = '#ff0000',
-  bright_green = '#00ff00',
-  bright_yellow = '#ffff00',
-  bright_blue = '#0000ff',
-  bright_magenta = '#ff00ff',
-  bright_cyan = '#00ffff',
-  bright_white = '#ffffff',
-}
+-- Lualine theme using ANSI cterm colors.
+-- Adapts to dark/light background automatically.
 
-local section_b = { fg = colors.black, bg = colors.bright_black }
-local section_c = { fg = colors.bright_white, bg = colors.black }
+local is_light = vim.o.background == 'light'
+
+local section_b = { fg = is_light and 0 or 15, bg = 8 }
+local section_c = { fg = is_light and 0 or 15, bg = is_light and 7 or 0 }
 
 local theme = {
   normal = {
-    a = { fg = colors.black, bg = colors.yellow, gui = 'bold' },
+    a = { fg = 0, bg = 3, gui = 'bold' },
     b = section_b,
     c = section_c,
     x = section_c,
@@ -32,7 +16,7 @@ local theme = {
     z = section_b,
   },
   insert = {
-    a = { fg = colors.black, bg = colors.green, gui = 'bold' },
+    a = { fg = 0, bg = 2, gui = 'bold' },
     b = section_b,
     c = section_c,
     x = section_c,
@@ -40,7 +24,7 @@ local theme = {
     z = section_b,
   },
   visual = {
-    a = { fg = colors.black, bg = colors.magenta, gui = 'bold' },
+    a = { fg = 0, bg = 5, gui = 'bold' },
     b = section_b,
     c = section_c,
     x = section_c,
@@ -48,7 +32,7 @@ local theme = {
     z = section_b,
   },
   replace = {
-    a = { fg = colors.black, bg = colors.cyan, gui = 'bold' },
+    a = { fg = 0, bg = 6, gui = 'bold' },
     b = section_b,
     c = section_c,
     x = section_c,
@@ -56,7 +40,7 @@ local theme = {
     z = section_b,
   },
   command = {
-    a = { fg = colors.black, bg = colors.blue, gui = 'bold' },
+    a = { fg = 0, bg = 4, gui = 'bold' },
     b = section_b,
     c = section_c,
     x = section_c,
@@ -64,12 +48,12 @@ local theme = {
     z = section_b,
   },
   inactive = {
-    a = { fg = colors.bright_white, bg = colors.black },
-    b = { fg = colors.bright_white, bg = colors.black },
-    c = { fg = colors.bright_white, bg = colors.black },
-    x = { fg = colors.bright_white, bg = colors.black },
-    y = { fg = colors.bright_white, bg = colors.black },
-    z = { fg = colors.bright_white, bg = colors.black },
+    a = { fg = 8, bg = is_light and 7 or 0 },
+    b = { fg = 8, bg = is_light and 7 or 0 },
+    c = { fg = 8, bg = is_light and 7 or 0 },
+    x = { fg = 8, bg = is_light and 7 or 0 },
+    y = { fg = 8, bg = is_light and 7 or 0 },
+    z = { fg = 8, bg = is_light and 7 or 0 },
   },
 }
 

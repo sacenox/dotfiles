@@ -46,6 +46,25 @@ return {
           quit_on_open = false,
         },
       },
+      -- Filesystem watcher configuration
+      filesystem_watchers = {
+        enable = true,
+        debounce_delay = 50,
+        max_events = 200,
+        ignore_dirs = {
+          'node_modules',
+          '.git',
+          'bin',
+          'build',
+          'dist',
+          'target',
+          '.cache',
+          '.venv',
+          'venv',
+          '__pycache__',
+          '/home/xonecas/src/zoea-nova/bin',
+        },
+      },
     })
 
   end,

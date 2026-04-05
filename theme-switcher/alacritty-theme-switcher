@@ -1,0 +1,64 @@
+#!/bin/bash
+# Watches KDE Plasma dark/light mode changes via D-Bus and updates:
+#   - Alacritty theme (live_config_reload)
+#   - pi coding agent theme (0x96f-dark / 0x96f-light)
+#   - Neovim background (dark / light) via nvim --remote
+
+THEME_DIR="$HOME/.config/alacritty/themes"
+CURRENT="$HOME/.config/alacritty/current-theme.toml"
+PI_SETTINGS="$HOME/.pi/agent/settings.json"
+
+set_theme() {
+    local mode="$1"
+
+    # Alacritty
+    cp -- "$THEME_DIR/${mode}.toml" "$CURRENT"
+
+    # pi coding agent — use 0x96f themed variants
+    if [ -f "$PI_SETTINGS" ] && command -v jq >/dev/null 2>&1; then
+        local pi_theme="0x96f-${mode}"
+        local tmp
+        tmp=$(jq --arg t "$pi_theme" '.theme = $t' "$PI_SETTINGS") && \
+            printf '%s\n' "$tmp" > "$PI_SETTINGS"
+    fi
+
+    # Signal file for Neovim (and anything else that wants to read it)
+    printf '%s\n' "$mode" > "$HOME/.local/state/kde-color-mode"
+}
+
+get_mode() {
+    local val
+    val=$(dbus-send --session --print-reply \
+        --dest=org.freedesktop.portal.Desktop \
+        /org/freedesktop/portal/desktop \
+        org.freedesktop.portal.Settings.Read \
+        string:"org.freedesktop.appearance" \
+        string:"color-scheme" 2>/dev/null \
+        | grep "uint32" | tail -1 | awk '{print $NF}')
+
+    # freedesktop color-scheme: 0=no preference, 1=dark, 2=light
+    if [ "$val" = "1" ]; then
+        echo "dark"
+    else
+        echo "light"
+    fi
+}
+
+# Set theme to match current system mode on start
+current=$(get_mode)
+set_theme "$current"
+echo "Initial mode: $current"
+
+# Listen for org.freedesktop.portal.Settings.SettingChanged signals.
+# When the appearance namespace fires, re-query and apply.
+dbus-monitor --session \
+    "type='signal',interface='org.freedesktop.portal.Settings',member='SettingChanged',path='/org/freedesktop/portal/desktop'" 2>/dev/null \
+| while read -r line; do
+    if echo "$line" | grep -q "org.freedesktop.appearance"; then
+        # Small delay to let the portal settle
+        sleep 0.2
+        mode=$(get_mode)
+        set_theme "$mode"
+        echo "Switched to: $mode"
+    fi
+done

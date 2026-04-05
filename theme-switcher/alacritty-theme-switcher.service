@@ -1,0 +1,11 @@
+[Unit]
+Description=Sync Alacritty theme with KDE dark/light mode
+After=graphical-session.target
+
+[Service]
+ExecStart=%h/.local/bin/alacritty-theme-switcher
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
