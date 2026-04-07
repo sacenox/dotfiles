@@ -4,7 +4,7 @@
   "workbench.layoutControl.enabled": false,
   "workbench.activityBar.location": "top",
   "terminal.integrated.initialHint": false,
-  "editor.fontSize": 16,
+  "editor.fontSize": 17,
   "editor.fontFamily": "'ZedMono Nerd Font Mono', 'Droid Sans Mono', monospace",
   "terminal.integrated.fontSize": 16,
   "workbench.startupEditor": "none",
