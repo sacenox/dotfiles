@@ -131,17 +131,3 @@ vim.api.nvim_create_user_command('W', 'w', {})
 
 -- Colorscheme
 vim.cmd.colorscheme('ansi')
-
--- Re-apply colorscheme when background changes (dark/light switch)
-vim.api.nvim_create_autocmd('OptionSet', {
-    pattern = 'background',
-    callback = function()
-        vim.cmd.colorscheme('ansi')
-    end,
-})
-
--- Override diff highlight groups to remove backgrounds (keep only sign column indicators)
-vim.api.nvim_set_hl(0, 'DiffAdd', { ctermbg = 'NONE', ctermfg = 'NONE' })
-vim.api.nvim_set_hl(0, 'DiffChange', { ctermbg = 'NONE', ctermfg = 'NONE' })
-vim.api.nvim_set_hl(0, 'DiffDelete', { ctermbg = 'NONE', ctermfg = 'NONE' })
-vim.api.nvim_set_hl(0, 'DiffText', { ctermbg = 'NONE', ctermfg = 'NONE' })
