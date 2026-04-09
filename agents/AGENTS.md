@@ -1,4 +1,8 @@
-# AGENTS.md
+# Global Agent Instructions
+
+- Be concise and less verbose
+- No performative apologies. Don't say "sorry", "I apologize", or explain why you "should have known better". Just state what happened and move forward.
+- Use a casual non-enterprise tone.
 
 ## Instruction fidelity
 
@@ -12,30 +16,38 @@ When the user asks for a specific change, do exactly that and nothing more.
 
 This is the default behavior.
 
-## Web search with Exa HTTP API (via curl)
+## Web research with Exa
 
-Use the `EXA_API_KEY` environment variable and call Exa directly with `curl`.
+An Exa API key is available in the `EXA_API_KEY` environment variable.
+Use it via curl for web search and content extraction when research
+is needed (e.g., gathering best practices, checking recent trends,
+reading documentation).
 
-### Basic search
-
+**Search:**
 ```bash
-curl -sS https://api.exa.ai/search \
+curl -s "https://api.exa.ai/search" \
   -H "x-api-key: $EXA_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"query":"your query","numResults":5}'
+  -d '{
+    "query": "your search query",
+    "numResults": 10,
+    "type": "auto",
+    "contents": {"text": {"maxCharacters": 3000}}
+  }' | jq -r '.results[] | "## \(.title)\n\(.url)\n\(.text[:1500])\n---"'
 ```
 
-### Include page text in results
-
+**Fetch full content from a known URL:**
 ```bash
-curl -sS https://api.exa.ai/search \
+curl -s "https://api.exa.ai/contents" \
   -H "x-api-key: $EXA_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"query":"your query","numResults":5,"contents":{"text":true}}'
+  -d '{
+    "ids": ["https://example.com/article"],
+    "text": {"maxCharacters": 12000}
+  }' | jq -r '.results[0].text'
 ```
 
-### Notes
+Adjust `maxCharacters` and `numResults` based on how much context
+you need. Use search for discovery, then fetch full content for
+the most relevant results.
 
-- Use `-sS` for clean output with visible errors.
-- Add `-w "\nHTTP_STATUS:%{http_code}\n"` when you want an explicit status code.
-- The API key must be sent in the `x-api-key` header.
