@@ -1,4 +1,0 @@
-dev-onyx.onyx-theme
-filipjane.0x96f-vscode-theme
-github.github-vscode-theme
-xonecas.0x96f-light-theme

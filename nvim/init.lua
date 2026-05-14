@@ -27,11 +27,12 @@ vim.g.maplocalleader = ' '
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- Search highlighting
+-- My keybindings
 keymap('n', '<leader>h', ':nohlsearch<CR>', opts)
 keymap('n', '<leader>q', ':qall<CR>', { noremap = true, silent = true, desc = 'Quit all' })
 keymap('n', '<leader>s', ':write<CR>', { noremap = true, silent = true, desc = 'Save buffer' })
 keymap('n', '<leader>S', ':wall<CR>', { noremap = true, silent = true, desc = 'Save all buffers' })
+keymap('n', '<leader>e', ':e .', { noremap = true, silent = true, desc = 'Save all buffers' })
 
 -- Movement remaps
 keymap('n', 'j', 'gj', { noremap = true })
