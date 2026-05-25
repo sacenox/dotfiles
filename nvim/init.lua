@@ -11,7 +11,7 @@ vim.opt.linebreak = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.writebackup = false
--- vim.opt.termguicolors = true
+vim.opt.termguicolors = true
 
 -- Indentation settings
 vim.opt.expandtab = true
@@ -43,4 +43,4 @@ vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 
 -- Theme
-vim.cmd('colorscheme ansi')
+vim.cmd('colorscheme sorbet')
