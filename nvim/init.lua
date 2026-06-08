@@ -62,6 +62,14 @@ require("lazy").setup({
       end
     },
 
+    {
+      'nvim-lualine/lualine.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      config = function()
+        require("lualine").setup()
+      end
+    },
+
     -- File tree sidebar
     {
       "nvim-tree/nvim-tree.lua",
@@ -85,6 +93,29 @@ require("lazy").setup({
       cmd = 'Telescope',
     },
 
+    -- LSP/etc with Mason
+    "neovim/nvim-lspconfig",
+    {
+      "mason-org/mason.nvim",
+      config = function()
+        require("mason").setup()
+      end,
+    },
+    {
+      "mason-org/mason-lspconfig.nvim",
+      config = function()
+        require("mason-lspconfig").setup({
+          ensure_installed = {
+            "biome",
+            "emmylua_ls",
+            "gopls",
+            "ts_ls",
+          },
+          automatic_enable = true,
+        })
+      end,
+    },
+
     -- Use `pi` for autocomplete
     {
       "sacenox/vim-pi-complete",
@@ -93,7 +124,7 @@ require("lazy").setup({
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
+  install = { colorscheme = { "sorbet" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
@@ -107,6 +138,9 @@ keymap('n', '<leader>h', ':nohlsearch<CR>', opts)
 keymap('n', '<leader>q', ':qall<CR>', { noremap = true, silent = true, desc = 'Quit all' })
 keymap('n', '<leader>s', ':write<CR>', { noremap = true, silent = true, desc = 'Save buffer' })
 keymap('n', '<leader>S', ':wall<CR>', { noremap = true, silent = true, desc = 'Save all buffers' })
+keymap('n', '<leader>d', function()
+  vim.diagnostic.setqflist({ open = true })
+end, { desc = 'Open diagnostics quickfix list' })
 
 -- Plugin keybinds
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
