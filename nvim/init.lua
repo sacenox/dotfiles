@@ -168,7 +168,68 @@ require("lazy").setup({
     },
 
     -- LSP/etc with Mason
-    "neovim/nvim-lspconfig",
+    {
+      "neovim/nvim-lspconfig",
+      config = function()
+        local function executable(path)
+          return path and vim.fn.executable(path) == 1
+        end
+
+        local function join(...)
+          return table.concat({ ... }, "/")
+        end
+
+        local function project_python(root_dir)
+          if root_dir then
+            for _, venv_name in ipairs({ ".venv", "venv" }) do
+              local python = join(root_dir, venv_name, "bin", "python")
+              if executable(python) then
+                return python
+              end
+            end
+          end
+
+          if vim.env.VIRTUAL_ENV then
+            local python = join(vim.env.VIRTUAL_ENV, "bin", "python")
+            if executable(python) then
+              return python
+            end
+          end
+
+          local python3 = vim.fn.exepath("python3")
+          if python3 ~= "" then
+            return python3
+          end
+
+          local python = vim.fn.exepath("python")
+          if python ~= "" then
+            return python
+          end
+        end
+
+        vim.lsp.config("pyright", {
+          before_init = function(_, config)
+            local python = project_python(config.root_dir)
+            if not python then
+              return
+            end
+
+            config.settings = config.settings or {}
+            config.settings.python = config.settings.python or {}
+            config.settings.python.pythonPath = python
+
+            config.settings.python.analysis = config.settings.python.analysis or {}
+            config.settings.python.analysis.autoSearchPaths = true
+            config.settings.python.analysis.useLibraryCodeForTypes = true
+
+            local src_path = config.root_dir and join(config.root_dir, "src") or nil
+            if src_path and vim.fn.isdirectory(src_path) == 1 then
+              config.settings.python.analysis.extraPaths = { src_path }
+            end
+          end,
+        })
+      end,
+    },
     {
       "mason-org/mason.nvim",
       config = function()
@@ -212,6 +273,13 @@ local opts = { noremap = true, silent = true }
 -- My keybindings
 keymap('n', '<leader>h', ':nohlsearch<CR>', opts)
 keymap('n', '<leader>q', ':qall<CR>', { noremap = true, silent = true, desc = 'Quit all' })
+keymap('n', '<leader>Q', function()
+  if vim.fn.winnr('$') > 1 then
+    vim.cmd.close()
+  else
+    vim.cmd.bdelete()
+  end
+end, { noremap = true, silent = true, desc = 'Close focused buffer/split' })
 keymap('n', '<leader>s', ':write<CR>', { noremap = true, silent = true, desc = 'Save buffer' })
 keymap('n', '<leader>S', ':wall<CR>', { noremap = true, silent = true, desc = 'Save all buffers' })
 keymap('n', '<leader>d', function()
