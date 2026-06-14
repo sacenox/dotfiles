@@ -47,26 +47,66 @@ require("lazy").setup({
   spec = {
     -- import your plugins
     {
-      -- Theme:
-      "zenbones-theme/zenbones.nvim",
-      -- Optionally install Lush. Allows for more configuration or extending the colorscheme
-      -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-      -- In Vim, compat mode is turned on as Lush only works in Neovim.
-      dependencies = "rktjmp/lush.nvim",
-      lazy = false,
-      priority = 1000,
-      -- you can set set configuration options here
-      config = function()
-        -- vim.g.zenbones_darken_comments = 45
-        vim.cmd.colorscheme('randombones')
-      end
-    },
-
-    {
       'nvim-lualine/lualine.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
       config = function()
-        require("lualine").setup()
+        local colors = {
+          bg = '#1c1c1c',
+          bg_mid = '#262626',
+          bg_light = '#303030',
+          bg_lighter = '#3a3a3a',
+          fg = '#c7c7c7',
+          gray = '#767676',
+          gray_bright = '#9e9e9e',
+          blue = '#5f87af',
+          cyan = '#87afaf',
+          green = '#5faf5f',
+          magenta = '#af87af',
+          red = '#af5f5f',
+          yellow = '#af875f',
+        }
+
+        local habamax_lualine = {
+          normal = {
+            a = { fg = colors.bg, bg = colors.gray_bright, gui = 'bold' },
+            b = { fg = colors.fg, bg = colors.bg_lighter },
+            c = { fg = colors.gray_bright, bg = colors.bg_mid },
+          },
+          insert = {
+            a = { fg = colors.bg, bg = colors.green, gui = 'bold' },
+            b = { fg = colors.fg, bg = colors.bg_lighter },
+            c = { fg = colors.gray_bright, bg = colors.bg_mid },
+          },
+          visual = {
+            a = { fg = colors.bg, bg = colors.magenta, gui = 'bold' },
+            b = { fg = colors.fg, bg = colors.bg_lighter },
+            c = { fg = colors.gray_bright, bg = colors.bg_mid },
+          },
+          replace = {
+            a = { fg = colors.bg, bg = colors.red, gui = 'bold' },
+            b = { fg = colors.fg, bg = colors.bg_lighter },
+            c = { fg = colors.gray_bright, bg = colors.bg_mid },
+          },
+          command = {
+            a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' },
+            b = { fg = colors.fg, bg = colors.bg_lighter },
+            c = { fg = colors.gray_bright, bg = colors.bg_mid },
+          },
+          terminal = {
+            a = { fg = colors.bg, bg = colors.cyan, gui = 'bold' },
+            b = { fg = colors.fg, bg = colors.bg_lighter },
+            c = { fg = colors.gray_bright, bg = colors.bg_mid },
+          },
+          inactive = {
+            a = { fg = colors.gray, bg = colors.bg_mid, gui = 'bold' },
+            b = { fg = colors.gray, bg = colors.bg_mid },
+            c = { fg = colors.gray, bg = colors.bg },
+          },
+        }
+
+        require("lualine").setup({
+          options = { theme = habamax_lualine }
+        })
       end
     },
 
@@ -93,6 +133,40 @@ require("lazy").setup({
       cmd = 'Telescope',
     },
 
+    -- Tree-sitter syntax highlighting
+    {
+      'nvim-treesitter/nvim-treesitter',
+      lazy = false,
+      build = ':TSUpdate',
+      config = function()
+        local parsers = {
+          'bash',
+          'css',
+          'go',
+          'html',
+          'javascript',
+          'json',
+          'lua',
+          'markdown',
+          'markdown_inline',
+          'python',
+          'query',
+          'tsx',
+          'typescript',
+          'vim',
+          'vimdoc',
+        }
+
+        require('nvim-treesitter').install(parsers)
+
+        vim.api.nvim_create_autocmd('FileType', {
+          callback = function(args)
+            pcall(vim.treesitter.start, args.buf)
+          end,
+        })
+      end,
+    },
+
     -- LSP/etc with Mason
     "neovim/nvim-lspconfig",
     {
@@ -109,6 +183,8 @@ require("lazy").setup({
             "biome",
             "emmylua_ls",
             "gopls",
+            "pyright",
+            "ruff",
             "ts_ls",
           },
           automatic_enable = true,
@@ -116,10 +192,10 @@ require("lazy").setup({
       end,
     },
 
-    -- Use `pi` for autocomplete
+    -- Use vim-ai-complete for autocomplete
     {
-      "sacenox/vim-pi-complete",
-      cmd = { "Pi" },
+      "sacenox/vim-ai-complete",
+      cmd = { "Ai" },
     }
   },
   -- Configure any other settings here. See the documentation for more details.
@@ -153,3 +229,5 @@ keymap('n', 'k', 'gk', { noremap = true })
 -- Command aliases
 vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
+
+vim.cmd.colorscheme('habamax')
