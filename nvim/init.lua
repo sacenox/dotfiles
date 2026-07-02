@@ -155,6 +155,7 @@ require("lazy").setup({
           'typescript',
           'vim',
           'vimdoc',
+          'zig',
         }
 
         require('nvim-treesitter').install(parsers)
@@ -247,6 +248,7 @@ require("lazy").setup({
             "pyright",
             "ruff",
             "ts_ls",
+            "zls",
           },
           automatic_enable = true,
         })
@@ -262,8 +264,8 @@ require("lazy").setup({
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "sorbet" } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+  -- disable automatic plugin update notifications on startup
+  checker = { enabled = false },
 })
 
 -- Keymaps

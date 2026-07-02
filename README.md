@@ -5,6 +5,7 @@ Personal configuration files for my development environment.
 ## Contents
 
 - `nvim/` — Neovim configuration
+- `ghostty-linux/` — Ghostty terminal configuration for Linux
 - `shell/` — Shell configuration and related setup files
 
 ## Usage
