@@ -49,65 +49,11 @@ require("lazy").setup({
     {
       'nvim-lualine/lualine.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
-      config = function()
-        local colors = {
-          bg = '#1c1c1c',
-          bg_mid = '#262626',
-          bg_light = '#303030',
-          bg_lighter = '#3a3a3a',
-          fg = '#c7c7c7',
-          gray = '#767676',
-          gray_bright = '#9e9e9e',
-          blue = '#5f87af',
-          cyan = '#87afaf',
-          green = '#5faf5f',
-          magenta = '#af87af',
-          red = '#af5f5f',
-          yellow = '#af875f',
-        }
-
-        local habamax_lualine = {
-          normal = {
-            a = { fg = colors.bg, bg = colors.gray_bright, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          insert = {
-            a = { fg = colors.bg, bg = colors.green, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          visual = {
-            a = { fg = colors.bg, bg = colors.magenta, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          replace = {
-            a = { fg = colors.bg, bg = colors.red, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          command = {
-            a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          terminal = {
-            a = { fg = colors.bg, bg = colors.cyan, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          inactive = {
-            a = { fg = colors.gray, bg = colors.bg_mid, gui = 'bold' },
-            b = { fg = colors.gray, bg = colors.bg_mid },
-            c = { fg = colors.gray, bg = colors.bg },
-          },
-        }
-
-        require("lualine").setup({
-          options = { theme = habamax_lualine }
-        })
-      end
+      opts = {
+        options = {
+          theme = 'auto',
+        },
+      },
     },
 
     -- File tree sidebar
@@ -259,6 +205,9 @@ require("lazy").setup({
     {
       "sacenox/vim-ai-complete",
       cmd = { "Ai" },
+      opts = {
+        command = { "agent", "--print", "--mode", "ask", "{prompt}" },
+      },
     }
   },
   -- Configure any other settings here. See the documentation for more details.
@@ -289,6 +238,7 @@ keymap('n', '<leader>d', function()
 end, { desc = 'Open diagnostics quickfix list' })
 
 -- Plugin keybinds
+keymap('x', '<leader>a', ':Ai<CR>', { noremap = true, silent = true, desc = 'AI complete selection' })
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 keymap('n', '<leader>f', ':Telescope find_files<CR>', opts)
 
