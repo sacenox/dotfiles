@@ -1,6 +1,5 @@
 -- Neovim configuration
 -- Author: @xonecas
--- Version: 0.1.1
 
 -- Basic settings
 vim.opt.relativenumber = true
@@ -45,13 +44,13 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- import your plugins
+    -- Statusline
     {
       'nvim-lualine/lualine.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
       opts = {
         options = {
-          theme = 'auto',
+          theme = 'gruvbox',
         },
       },
     },
@@ -217,6 +216,7 @@ require("lazy").setup({
       name = "vim-ai-complete",
     },
   },
+
   -- Configure any other settings here. See the documentation for more details.
   -- disable automatic plugin update notifications on startup
   checker = { enabled = false },
