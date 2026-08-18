@@ -254,4 +254,8 @@ keymap('n', 'k', 'gk', { noremap = true })
 vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 
+-- Shortcut to open the inline AI prompt in visual mode
+keymap('x', '<leader>a', ':Ai<CR>', opts)
+
+-- Set a nice theme?
 vim.cmd.colorscheme('retrobox')
