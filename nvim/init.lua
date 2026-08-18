@@ -49,65 +49,17 @@ require("lazy").setup({
     {
       'nvim-lualine/lualine.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
-      config = function()
-        local colors = {
-          bg = '#1c1c1c',
-          bg_mid = '#262626',
-          bg_light = '#303030',
-          bg_lighter = '#3a3a3a',
-          fg = '#c7c7c7',
-          gray = '#767676',
-          gray_bright = '#9e9e9e',
-          blue = '#5f87af',
-          cyan = '#87afaf',
-          green = '#5faf5f',
-          magenta = '#af87af',
-          red = '#af5f5f',
-          yellow = '#af875f',
-        }
+      opts = {
+        options = {
+          theme = 'auto',
+        },
+      },
+    },
 
-        local habamax_lualine = {
-          normal = {
-            a = { fg = colors.bg, bg = colors.gray_bright, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          insert = {
-            a = { fg = colors.bg, bg = colors.green, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          visual = {
-            a = { fg = colors.bg, bg = colors.magenta, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          replace = {
-            a = { fg = colors.bg, bg = colors.red, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          command = {
-            a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          terminal = {
-            a = { fg = colors.bg, bg = colors.cyan, gui = 'bold' },
-            b = { fg = colors.fg, bg = colors.bg_lighter },
-            c = { fg = colors.gray_bright, bg = colors.bg_mid },
-          },
-          inactive = {
-            a = { fg = colors.gray, bg = colors.bg_mid, gui = 'bold' },
-            b = { fg = colors.gray, bg = colors.bg_mid },
-            c = { fg = colors.gray, bg = colors.bg },
-          },
-        }
-
-        require("lualine").setup({
-          options = { theme = habamax_lualine }
-        })
-      end
+    -- Git signs
+    {
+      "lewis6991/gitsigns.nvim",
+      opts = {},
     },
 
     -- File tree sidebar
@@ -119,7 +71,11 @@ require("lazy").setup({
         "nvim-tree/nvim-web-devicons",
       },
       config = function()
-        require("nvim-tree").setup {}
+        require("nvim-tree").setup {
+          filters = {
+            git_ignored = false,
+          },
+        }
       end,
     },
 
@@ -257,13 +213,11 @@ require("lazy").setup({
 
     -- Use vim-ai-complete for autocomplete
     {
-      "sacenox/vim-ai-complete",
-      cmd = { "Ai" },
-    }
+      dir = "/home/xonecas/src/vim-ai-complete",
+      name = "vim-ai-complete",
+    },
   },
   -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "sorbet" } },
   -- disable automatic plugin update notifications on startup
   checker = { enabled = false },
 })
@@ -300,4 +254,4 @@ keymap('n', 'k', 'gk', { noremap = true })
 vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 
-vim.cmd.colorscheme('habamax')
+vim.cmd.colorscheme('retrobox')

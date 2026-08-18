@@ -2,18 +2,18 @@
 #
 
 # font-family = ZedMono Nerd Font Mono
-# font-family = CommitMono Nerd Font Mono
+font-family = CommitMono Nerd Font Mono
 
 # font-family = Monaspace Argon NF
-font-family = Monaspace Neon NF
+# font-family = Monaspace Neon NF
 # font-family = Monaspace Xenon NF
 # font-family = Monaspace Krypton NF
 # font-family = Monaspace Radon NF
 
 font-size = 12
-window-width = 100
-window-height = 40
+window-width = 150
+window-height = 32
 unfocused-split-opacity = 1
 
 # theme = 0x96f
-theme = Zenwritten Dark
+# theme = Zenwritten Dark
