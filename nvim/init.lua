@@ -211,8 +211,6 @@ require("lazy").setup({
     }
   },
   -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "sorbet" } },
   -- disable automatic plugin update notifications on startup
   checker = { enabled = false },
 })
@@ -250,4 +248,4 @@ keymap('n', 'k', 'gk', { noremap = true })
 vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 
-vim.cmd.colorscheme('habamax')
+vim.cmd.colorscheme('retrobox')
