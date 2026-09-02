@@ -1,6 +1,7 @@
 # Rules for AGENTS
 
 - Always return exactly what was asked. Do not add scope, backwards compatibility or extras without the user explicitly asking.
+- Do not add tests unless explicitly told to.
 - Use `gh` for Github (it's already authenticated as me).
 - Use `uvx hf` for HuggingFace (also already authenticated as me).
 - Use `curl` and the environment's `EXA_API_KEY` to search and read web contents.

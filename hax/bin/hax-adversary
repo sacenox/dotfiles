@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
-# hax-adversary — run the adversarial reviewer as an isolated hax -p subprocess.
+# hax-adversary — run the adversarial agent as an isolated hax -p subprocess.
 #
 # Usage:
-#   hax-adversary <review brief...>
+#   hax-adversary <brief...>
 #   echo "<brief>" | hax-adversary
 #   hax-adversary < brief.txt
 #
-# The reviewer model and instructions come from the `adversary` preset in
-# ~/.config/hax/config.json. --bare strips project instructions, skills, and
-# subagent guidance; --no-session keeps the child out of session history.
 set -euo pipefail
 
 if [ "$#" -gt 0 ]; then
@@ -19,5 +16,5 @@ if [ ! -t 0 ]; then
 	exec hax -p --preset=adversary --no-session
 fi
 
-echo "usage: hax-adversary <review brief>   (or pipe the brief via stdin)" >&2
+echo "usage: hax-adversary <brief>   (or pipe the brief via stdin)" >&2
 exit 1
