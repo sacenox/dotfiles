@@ -1,0 +1,20 @@
+{
+  "presets": {
+    "adversary": {
+      "description": "independent adversarial reviewer (read-only)",
+      "provider": "opencode-go",
+      "model": "deepseek-v4-flash",
+      "effort": "high",
+      "system_prompt_append": "@~/.config/hax/prompts/adversary.md",
+      "tint": "rose"
+    },
+    "implementer": {
+      "description": "fast implementer: do the given task, nothing else",
+      "provider": "opencode-go",
+      "model": "glm-5.3-flash",
+      "effort": "low",
+      "system_prompt_append": "Implement the given task. Do not add scope, extras, or compatibility the task did not ask for. Do not commit. The caller's task is the requirement; repository docs constrain how, they do not replace the task.",
+      "tint": "sage"
+    }
+  }
+}

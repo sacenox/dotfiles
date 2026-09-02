@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# hax-loop — one-shot implementer → diff → adversary. No retry, no commit.
+#
+# Usage:
+#   hax-loop <task...>
+#   echo "<task>" | hax-loop
+#   hax-loop < task.txt
+#
+# Run from the project directory. The caller's task is passed verbatim.
+# Implementer and adversary models come from presets in ~/.config/hax/config.json.
+set -euo pipefail
+
+if [ -n "${HAX_LOOP:-}" ]; then
+	echo "hax-loop: refused to nest" >&2
+	exit 1
+fi
+export HAX_LOOP=1
+
+if [ "$#" -gt 0 ]; then
+	TASK="$*"
+elif [ ! -t 0 ]; then
+	TASK=$(cat)
+else
+	echo "usage: hax-loop <task>   (or pipe the task via stdin)" >&2
+	exit 1
+fi
+
+if [ -z "$TASK" ]; then
+	echo "hax-loop: empty task" >&2
+	exit 1
+fi
+
+echo "==== implement ===="
+# Skills and subagent presets stay with the overseer; the implementer would
+# otherwise see this workflow and call hax-loop instead of doing the work.
+printf '%s\n' "$TASK" | HAX_NO_SKILLS=1 HAX_NO_SUBAGENTS=1 \
+	hax -p --preset=implementer --no-session
+
+echo "==== diff ===="
+git status --short
+git --no-pager diff
+
+echo "==== review ===="
+printf '%s\n\nReview the uncommitted diff against that task.\n' "$TASK" |
+	hax -p --preset=adversary --no-session --bare

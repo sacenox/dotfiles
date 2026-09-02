@@ -18,3 +18,8 @@ unfocused-split-opacity = 1
 # theme = 0x96f
 # theme = Zenwritten Dark
 theme = Gruvbox Dark Hard
+
+# Send a literal LF for Shift+Enter so terminal agents (hax, etc.) can insert
+# newlines; Ghostty otherwise sends the CSI sequence [27;2;13~ which they
+# ignore.
+keybind = shift+enter=text:\n

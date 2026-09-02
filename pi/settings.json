@@ -1,0 +1,15 @@
+{
+  "lastChangelogVersion": "0.84.4",
+  "theme": "dark",
+  "showCacheMissNotices": true,
+  "collapseChangelog": true,
+  "enableInstallTelemetry": true,
+  "defaultProjectTrust": "always",
+  "tuiMode": "fullscreen",
+  "fullscreenScrollbar": "auto",
+  "packages": [],
+  "hideThinkingBlock": true,
+  "defaultProvider": "opencode-go",
+  "defaultModel": "grok-4.6",
+  "defaultThinkingLevel": "high"
+}
