@@ -42,4 +42,4 @@ git --no-pager diff
 
 echo "==== review ===="
 printf '%s\n\nReview the uncommitted diff against that task.\n' "$TASK" |
-	hax -p --preset=adversary --no-session --bare
+	hax -p --preset=adversary --no-session

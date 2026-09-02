@@ -12,11 +12,11 @@
 set -euo pipefail
 
 if [ "$#" -gt 0 ]; then
-	exec hax -p --preset=adversary --no-session --bare "$@"
+	exec hax -p --preset=adversary --no-session "$@"
 fi
 
 if [ ! -t 0 ]; then
-	exec hax -p --preset=adversary --no-session --bare
+	exec hax -p --preset=adversary --no-session
 fi
 
 echo "usage: hax-adversary <review brief>   (or pipe the brief via stdin)" >&2
