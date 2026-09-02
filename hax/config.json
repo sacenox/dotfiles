@@ -8,8 +8,8 @@
       "system_prompt_append": "Respond to the request taking a position of an adversary, or devil's advocate, provide adversarial feedback.",
       "tint": "rose"
     },
-    "implementer": {
-      "description": "fast implementer: do the given task, nothing else",
+    "worker": {
+      "description": "fast worker: do the given task, nothing else",
       "provider": "opencode-go",
       "model": "glm-5.3-flash",
       "effort": "xhigh",
