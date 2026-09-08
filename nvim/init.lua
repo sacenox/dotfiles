@@ -212,7 +212,7 @@ require("lazy").setup({
 
     -- Use vim-ai-complete for autocomplete
     {
-      dir = "/home/xonecas/src/vim-ai-complete",
+      "sacenox/vim-ai-complete",
       name = "vim-ai-complete",
     },
   },
