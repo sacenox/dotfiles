@@ -15,9 +15,9 @@ window-width = 150
 window-height = 32
 unfocused-split-opacity = 1
 
-# theme = 0x96f
+theme = 0x96f
 # theme = Zenwritten Dark
-theme = Gruvbox Dark Hard
+# theme = Gruvbox Dark Hard
 
 # Send a literal LF for Shift+Enter so terminal agents (hax, etc.) can insert
 # newlines; Ghostty otherwise sends the CSI sequence [27;2;13~ which they

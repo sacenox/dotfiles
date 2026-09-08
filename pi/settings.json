@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.4",
+  "lastChangelogVersion": "0.85.1",
   "theme": "dark",
   "showCacheMissNotices": true,
   "collapseChangelog": true,
@@ -9,7 +9,7 @@
   "fullscreenScrollbar": "auto",
   "packages": [],
   "hideThinkingBlock": true,
-  "defaultProvider": "opencode-go",
-  "defaultModel": "grok-4.6",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-6-astra",
   "defaultThinkingLevel": "high"
 }

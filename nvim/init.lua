@@ -50,7 +50,7 @@ require("lazy").setup({
       dependencies = { 'nvim-tree/nvim-web-devicons' },
       opts = {
         options = {
-          theme = 'gruvbox',
+          theme = 'molokai',
         },
       },
     },
@@ -258,4 +258,4 @@ vim.api.nvim_create_user_command('W', 'w', {})
 keymap('x', '<leader>a', ':Ai<CR>', opts)
 
 -- Set a nice theme?
-vim.cmd.colorscheme('retrobox')
+vim.cmd.colorscheme('unokai')
