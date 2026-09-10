@@ -44,13 +44,21 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+    -- Some themes:
+    {
+      "folke/tokyonight.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},
+    },
+
     -- Statusline
     {
       'nvim-lualine/lualine.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
       opts = {
         options = {
-          theme = 'molokai',
+          theme = 'auto',
         },
       },
     },
@@ -254,8 +262,5 @@ keymap('n', 'k', 'gk', { noremap = true })
 vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 
--- Shortcut to open the inline AI prompt in visual mode
-keymap('x', '<leader>a', ':Ai<CR>', opts)
-
 -- Set a nice theme?
-vim.cmd.colorscheme('unokai')
+vim.cmd.colorscheme('tokyonight-night')

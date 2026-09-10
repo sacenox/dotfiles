@@ -3,7 +3,6 @@
 
 font-family = ZedMono Nerd Font Mono
 # font-family = CommitMono Nerd Font Mono
-
 # font-family = Monaspace Argon NF
 # font-family = Monaspace Neon NF
 # font-family = Monaspace Xenon NF
@@ -18,6 +17,7 @@ unfocused-split-opacity = 1
 theme = 0x96f
 # theme = Zenwritten Dark
 # theme = Gruvbox Dark Hard
+theme = TokyoNight Night
 
 # Send a literal LF for Shift+Enter so terminal agents (hax, etc.) can insert
 # newlines; Ghostty otherwise sends the CSI sequence [27;2;13~ which they

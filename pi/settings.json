@@ -5,8 +5,6 @@
   "collapseChangelog": true,
   "enableInstallTelemetry": true,
   "defaultProjectTrust": "always",
-  "tuiMode": "fullscreen",
-  "fullscreenScrollbar": "auto",
   "packages": [],
   "hideThinkingBlock": true,
   "defaultProvider": "openai-codex",
