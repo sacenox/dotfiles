@@ -253,6 +253,8 @@ end, { desc = 'Open diagnostics quickfix list' })
 -- Plugin keybinds
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 keymap('n', '<leader>f', ':Telescope find_files<CR>', opts)
+keymap('x', '<leader>r', ':Ai<CR>', { desc = 'AI replace selection' })
+keymap('n', '<leader>a', '<cmd>AiComplete<CR>', { desc = 'AI completion at cursor' })
 
 -- Movement remaps
 keymap('n', 'j', 'gj', { noremap = true })

@@ -10,11 +10,9 @@ font-family = ZedMono Nerd Font Mono
 # font-family = Monaspace Radon NF
 
 font-size = 12
-window-width = 150
-window-height = 32
 unfocused-split-opacity = 1
 
-theme = 0x96f
+# theme = 0x96f
 # theme = Zenwritten Dark
 # theme = Gruvbox Dark Hard
 theme = TokyoNight Night
