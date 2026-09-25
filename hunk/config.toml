@@ -1,9 +1,0 @@
-theme = "aurora-x"
-mode = "auto"
-line_numbers = true
-wrap_lines = true
-hunk_headers = true
-menu_bar = true
-agent_notes = true
-copy_decorations = false
-cursor_line = "row"
