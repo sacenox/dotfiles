@@ -51,6 +51,11 @@ require("lazy").setup({
       priority = 1000,
       opts = {},
     },
+    {
+      "nyoom-engineering/oxocarbon.nvim",
+      lazy = false,
+      priority = 1000,
+    },
 
     -- Statusline
     {
@@ -131,98 +136,99 @@ require("lazy").setup({
       end,
     },
 
-    -- LSP/etc with Mason
-    {
-      "neovim/nvim-lspconfig",
-      config = function()
-        local function executable(path)
-          return path and vim.fn.executable(path) == 1
-        end
-
-        local function join(...)
-          return table.concat({ ... }, "/")
-        end
-
-        local function project_python(root_dir)
-          if root_dir then
-            for _, venv_name in ipairs({ ".venv", "venv" }) do
-              local python = join(root_dir, venv_name, "bin", "python")
-              if executable(python) then
-                return python
-              end
-            end
-          end
-
-          if vim.env.VIRTUAL_ENV then
-            local python = join(vim.env.VIRTUAL_ENV, "bin", "python")
-            if executable(python) then
-              return python
-            end
-          end
-
-          local python3 = vim.fn.exepath("python3")
-          if python3 ~= "" then
-            return python3
-          end
-
-          local python = vim.fn.exepath("python")
-          if python ~= "" then
-            return python
-          end
-        end
-
-        vim.lsp.config("pyright", {
-          before_init = function(_, config)
-            local python = project_python(config.root_dir)
-            if not python then
-              return
-            end
-
-            config.settings = config.settings or {}
-            config.settings.python = config.settings.python or {}
-            config.settings.python.pythonPath = python
-
-            config.settings.python.analysis = config.settings.python.analysis or {}
-            config.settings.python.analysis.autoSearchPaths = true
-            config.settings.python.analysis.useLibraryCodeForTypes = true
-
-            local src_path = config.root_dir and join(config.root_dir, "src") or nil
-            if src_path and vim.fn.isdirectory(src_path) == 1 then
-              config.settings.python.analysis.extraPaths = { src_path }
-            end
-          end,
-        })
-      end,
-    },
-    {
-      "mason-org/mason.nvim",
-      config = function()
-        require("mason").setup()
-      end,
-    },
-    {
-      "mason-org/mason-lspconfig.nvim",
-      config = function()
-        require("mason-lspconfig").setup({
-          ensure_installed = {
-            "biome",
-            "emmylua_ls",
-            "gopls",
-            "pyright",
-            "ruff",
-            "ts_ls",
-            "zls",
-          },
-          automatic_enable = true,
-        })
-      end,
-    },
-
     -- Use vim-ai-complete for autocomplete
     {
       "sacenox/vim-ai-complete",
       name = "vim-ai-complete",
     },
+
+    -- NO LSPs RIGHT NOW --
+    -- LSP/etc with Mason
+    -- {
+    --   "neovim/nvim-lspconfig",
+    --   config = function()
+    --     local function executable(path)
+    --       return path and vim.fn.executable(path) == 1
+    --     end
+    --
+    --     local function join(...)
+    --       return table.concat({ ... }, "/")
+    --     end
+    --
+    --     local function project_python(root_dir)
+    --       if root_dir then
+    --         for _, venv_name in ipairs({ ".venv", "venv" }) do
+    --           local python = join(root_dir, venv_name, "bin", "python")
+    --           if executable(python) then
+    --             return python
+    --           end
+    --         end
+    --       end
+    --
+    --       if vim.env.VIRTUAL_ENV then
+    --         local python = join(vim.env.VIRTUAL_ENV, "bin", "python")
+    --         if executable(python) then
+    --           return python
+    --         end
+    --       end
+    --
+    --       local python3 = vim.fn.exepath("python3")
+    --       if python3 ~= "" then
+    --         return python3
+    --       end
+    --
+    --       local python = vim.fn.exepath("python")
+    --       if python ~= "" then
+    --         return python
+    --       end
+    --     end
+    --
+    --     vim.lsp.config("pyright", {
+    --       before_init = function(_, config)
+    --         local python = project_python(config.root_dir)
+    --         if not python then
+    --           return
+    --         end
+    --
+    --         config.settings = config.settings or {}
+    --         config.settings.python = config.settings.python or {}
+    --         config.settings.python.pythonPath = python
+    --
+    --         config.settings.python.analysis = config.settings.python.analysis or {}
+    --         config.settings.python.analysis.autoSearchPaths = true
+    --         config.settings.python.analysis.useLibraryCodeForTypes = true
+    --
+    --         local src_path = config.root_dir and join(config.root_dir, "src") or nil
+    --         if src_path and vim.fn.isdirectory(src_path) == 1 then
+    --           config.settings.python.analysis.extraPaths = { src_path }
+    --         end
+    --       end,
+    --     })
+    --   end,
+    -- },
+    -- {
+    --   "mason-org/mason.nvim",
+    --   config = function()
+    --     require("mason").setup()
+    --   end,
+    -- },
+    -- {
+    --   "mason-org/mason-lspconfig.nvim",
+    --   config = function()
+    --     require("mason-lspconfig").setup({
+    --       ensure_installed = {
+    --         "biome",
+    --         "emmylua_ls",
+    --         "gopls",
+    --         "pyright",
+    --         "ruff",
+    --         "ts_ls",
+    --         "zls",
+    --       },
+    --       automatic_enable = true,
+    --     })
+    --   end,
+    -- },
   },
 
   -- Configure any other settings here. See the documentation for more details.
@@ -265,4 +271,4 @@ vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 
 -- Set a nice theme?
-vim.cmd.colorscheme('tokyonight-night')
+vim.cmd.colorscheme('oxocarbon')

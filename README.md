@@ -6,12 +6,11 @@ Each folder is a config. Symlink it to the path the tool already discovers.
 
 ## Contents
 
+- `agents/` — Agents → `~/.agents`
+- `bash/` — Bash → `~/.bashrc`
+- `ghostty/` — Ghostty → `~/.config/ghostty/config`
+- `kitty/` — Kitty → `~/.config/kitty`
 - `nvim/` — Neovim → `~/.config/nvim`
-- `ghostty/` — Ghostty → `~/.config/ghostty`
-- `bash/` — Bash setup files
-- `hunk/` — Hunk → `~/.config/hunk/config.toml`
-- `hax/` — Hax agent, skills, prompts, helper scripts → `~/.config/hax`
-- `pi/` — Pi agent, prompts, extensions → `~/.pi/agent`
 
 ## Usage
 

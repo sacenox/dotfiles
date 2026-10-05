@@ -1,3 +1,7 @@
+# User-local binaries, e.g. npm global installs (prefix is ~/.local, see ~/.npmrc).
+# Set before the interactive guard so non-interactive shells see it too.
+export PATH="$HOME/.local/bin:$PATH"
+
 [[ $- != *i* ]] && return
 
 export EDITOR=nvim
@@ -11,20 +15,12 @@ alias gc='git commit --verbose'
 alias gp='git pull --rebase'
 alias gpo='git push origin'
 alias nv='nvim'
+alias sto='cd /mnt/storage'
+alias rep='cd /mnt/storage/repos'
 
-export PATH=$PATH:~/.local/bin
-export PATH="$(go env GOPATH)/bin:$PATH"
-
-# Credentials loaded from ~/.config/keys.json
-if [ -f "$HOME/.config/keys.json" ]; then
-  while IFS='=' read -r key value; do
-    export "$key=$value"
-  done < <(python3 -c '
-import json, sys
-with open(sys.argv[1]) as f:
-    for k, v in json.load(f).items():
-        print(f"{k}={v}")
-' "$HOME/.config/keys.json")
+# Credentials loaded from ~/.keys.json
+if [ -f "$HOME/.keys.json" ]; then
+  eval "$(jq -r 'to_entries[] | "export \(.key)=\(.value | @sh)"' "$HOME/.keys.json")"
 fi
 
 greet() {
@@ -41,7 +37,6 @@ greet() {
   local cow=${cows[$idx]:-"default"}
   fortune -s | cowsay -f "$cow" -W 80 | lolcat -p 1.0 -F 0.06 -S "$RANDOM"
 }
-
 # Uncomment to get a nice greeting.
 greet
 
