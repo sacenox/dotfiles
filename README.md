@@ -10,6 +10,7 @@ Each folder is a config. Symlink it to the path the tool already discovers.
 - `bash/` — Bash → `~/.bashrc`
 - `ghostty/` — Ghostty → `~/.config/ghostty/config`
 - `kitty/` — Kitty → `~/.config/kitty`
+- `mini-coding-agent/` — mini-coding-agent → `~/.config/mini-coding-agent`
 - `nvim/` — Neovim → `~/.config/nvim`
 
 ## Usage

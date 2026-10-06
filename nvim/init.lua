@@ -49,12 +49,18 @@ require("lazy").setup({
       "folke/tokyonight.nvim",
       lazy = false,
       priority = 1000,
-      opts = {},
+      opts = { style = "night" },
     },
     {
       "nyoom-engineering/oxocarbon.nvim",
       lazy = false,
       priority = 1000,
+    },
+    {
+      "rebelot/kanagawa.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},
     },
 
     -- Statusline
@@ -271,4 +277,4 @@ vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 
 -- Set a nice theme?
-vim.cmd.colorscheme('oxocarbon')
+vim.cmd.colorscheme('tokyonight')
