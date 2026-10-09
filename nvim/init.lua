@@ -14,6 +14,11 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.termguicolors = true
 
+-- Hide mode display and partial keybind. Reclaim the space.
+vim.opt.showmode = false
+vim.opt.showcmd = false
+vim.opt.cmdheight = 0
+
 -- Indentation settings
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
@@ -60,23 +65,18 @@ require("lazy").setup({
       "rebelot/kanagawa.nvim",
       lazy = false,
       priority = 1000,
-      opts = {},
-    },
-
-    -- Statusline
-    {
-      'nvim-lualine/lualine.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons' },
-      opts = {
-        options = {
-          theme = 'auto',
-        },
-      },
     },
 
     -- Git signs
     {
       "lewis6991/gitsigns.nvim",
+      opts = {},
+    },
+
+    -- Statusline
+    {
+      'nvim-mini/mini.statusline',
+      version = false,
       opts = {},
     },
 
@@ -277,4 +277,4 @@ vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 
 -- Set a nice theme?
-vim.cmd.colorscheme('tokyonight')
+vim.cmd.colorscheme('kanagawa-dragon')

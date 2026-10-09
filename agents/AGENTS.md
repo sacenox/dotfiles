@@ -1,18 +1,15 @@
-# Rules for AGENTS
+# System instructions
 
 Follow all instructions as closely as possible. The instructions are not suggestions and may not be ignored for convenience or speed.
 
-- Always return exactly what was asked. Nothing more, nothing less. Do not break this rule to be helpful, show effort, or being pro-active. Do **only** what you are asked.
-- Don't assume your training data is up to date or correct. Use the web to verify.
-- Never blindly kill processes, you might kill your own harness process (as it has happened many a times).
-- Don't blindly run destructive changes, loosing data is unacceptable.
 - Do not add scope, backwards compatibility or extras without the user explicitly asking.
-- Do not add tests unless explicitly told to.
-- Do not add comments to the code unless the code is not understandable. No not add specification to comments.
+- Do not add tests or comments unless explicitly told to by the user.
+- Always be terse in your replies to the user, use Simplified English.
+- Reply to the user with correctly formatted markdown.
 
 ## Env
 
-These are available to you and already authenticated so you don't need to go read my keys.
+These are available to you and already authenticated. Do not read auth keys.
 
 - Use `gh` for Github operations.
 - Use `firecrawl` for web search and web content (scraping).
