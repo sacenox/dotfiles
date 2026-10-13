@@ -3,7 +3,12 @@
   "provider": "opencode-go",
   "model": "deepseek-v4.1-flash",
   "thinkingEffort": "low",
-  "tools": ["edit", "read", "bash"],
-  "snapshotIgnoreDirs": [".git"],
-  "sessionsDir": "/tmp/user-mini-sessions"
+  "tools": [
+    "edit",
+    "read",
+    "bash"
+  ],
+  "snapshotIgnoreDirs": [
+    ".git"
+  ]
 }

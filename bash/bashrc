@@ -14,9 +14,13 @@ alias gst='git status'
 alias gc='git commit --verbose'
 alias gp='git pull --rebase'
 alias gpo='git push origin'
+
 alias nv='nvim'
+
 alias sto='cd /mnt/storage'
 alias rep='cd /mnt/storage/repos'
+
+alias vps='ssh sean@xonecas.io'
 
 # Credentials loaded from ~/.keys.json
 if [ -f "$HOME/.keys.json" ]; then

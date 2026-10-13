@@ -14,6 +14,8 @@ These are available to you and already authenticated. Do not read auth keys.
 - Use `gh` for Github operations.
 - Use `firecrawl` for web search and web content (scraping).
 
+> You don't have sudo, it's intended. The user does, he can run commands. Never try to bypass or escalate your privileges.
+
 ## Golden rule for coding
 
 > Bugs, Cyclomatic complexity, Time complexity, and Memory complexity are all directly related to the single lines of code amount.

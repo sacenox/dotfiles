@@ -278,3 +278,4 @@ vim.api.nvim_create_user_command('W', 'w', {})
 
 -- Set a nice theme?
 vim.cmd.colorscheme('kanagawa-dragon')
+-- vim.cmd.colorscheme('oxocarbon')
