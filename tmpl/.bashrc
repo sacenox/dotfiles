@@ -16,6 +16,7 @@ alias gp='git pull --rebase'
 alias gpo='git push origin'
 
 alias nv='nvim'
+alias zj='zellij a -c dev'
 
 alias sto='cd {{ paths.storage }}'
 alias rep='cd {{ paths.repos }}'
