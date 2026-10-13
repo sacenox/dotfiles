@@ -17,15 +17,16 @@ alias gpo='git push origin'
 
 alias nv='nvim'
 
-alias sto='cd /mnt/storage'
-alias rep='cd /mnt/storage/repos'
+alias sto='cd {{ paths.storage }}'
+alias rep='cd {{ paths.repos }}'
 
-alias vps='ssh sean@xonecas.io'
+alias vps='ssh {{ vps.user }}@{{ vps.host }}'
 
-# Credentials loaded from ~/.keys.json
-if [ -f "$HOME/.keys.json" ]; then
-  eval "$(jq -r 'to_entries[] | "export \(.key)=\(.value | @sh)"' "$HOME/.keys.json")"
-fi
+export FIRECRAWL_API_KEY='{{ FIRECRAWL_API_KEY }}'
+export HOSTINGER_API_KEY='{{ HOSTINGER_API_KEY }}'
+export OPENCODE_API_KEY='{{ OPENCODE_API_KEY }}'
+export PORKBUN_API_KEY='{{ PORKBUN_API_KEY }}'
+export PORKBUN_SECRET_API_KEY='{{ PORKBUN_SECRET_API_KEY }}'
 
 greet() {
   local cows=(

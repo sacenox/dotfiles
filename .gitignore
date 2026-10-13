@@ -1,0 +1,3 @@
+dot-compose/.zig-cache/
+dot-compose/zig-out/
+values/secrets.json

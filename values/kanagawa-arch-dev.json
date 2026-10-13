@@ -1,0 +1,14 @@
+{
+  "font": { "family": "Lilex Nerd Font Mono", "size": 12 },
+  "env": { "tools": "- Use `gh` for Github operations.\n- Use `firecrawl` for web search and web content (scraping)." },
+  "paths": { "storage": "/mnt/storage", "repos": "/mnt/storage/repos" },
+  "vps": { "user": "sean", "host": "xonecas.io" },
+  "kitty": { "theme": "kanagawa_dragon.conf" },
+  "nvim": { "theme": "kanagawa-dragon" },
+  "agent": {
+    "theme": "kanagawa",
+    "provider": "opencode-go",
+    "model": "deepseek-v4.1-flash",
+    "thinkingEffort": "low"
+  }
+}

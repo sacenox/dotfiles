@@ -277,5 +277,5 @@ vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 
 -- Set a nice theme?
-vim.cmd.colorscheme('kanagawa-dragon')
+vim.cmd.colorscheme('{{ nvim.theme }}')
 -- vim.cmd.colorscheme('oxocarbon')

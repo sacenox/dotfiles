@@ -1,0 +1,14 @@
+{
+  "theme": "{{ agent.theme }}",
+  "provider": "{{ agent.provider }}",
+  "model": "{{ agent.model }}",
+  "thinkingEffort": "{{ agent.thinkingEffort }}",
+  "tools": [
+    "edit",
+    "read",
+    "bash"
+  ],
+  "snapshotIgnoreDirs": [
+    ".git"
+  ]
+}

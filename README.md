@@ -1,24 +1,20 @@
 # Dotfiles
 
-Personal configuration files for my development environment.
+Personal configuration files for my development environment, rendered with [`dot-compose`](./dot-compose).
 
-Each folder is a config. Symlink it to the path the tool already discovers.
+## Layout
 
-## Contents
-
-- `agents/` — Agents → `~/.agents`
-- `bash/` — Bash → `~/.bashrc`
-- `ghostty/` — Ghostty → `~/.config/ghostty/config`
-- `kitty/` — Kitty → `~/.config/kitty`
-- `mini-coding-agent/` — mini-coding-agent → `~/.config/mini-coding-agent`
-- `nvim/` — Neovim → `~/.config/nvim`
+- `tmpl/` mirrors `$HOME`. `tmpl/.bashrc` renders to `~/.bashrc`.
+- `values/` holds one JSON file per machine/profile, e.g. `values/kanagawa-arch-dev.json`.
+- Templates fill machine-specific slots with `{{ key }}` / `{{ nested.key }}`;
+  everything else is copied verbatim.
 
 ## Usage
 
+Render one file with:
+
 ```sh
-git clone git@github.com:sacenox/dotfiles.git ~/src/dotfiles
+dot-compose --tmpl tmpl/.bashrc --values values/kanagawa-arch-dev.json
 ```
 
-Then symlink your desired configs to their respective place (some in `~/.config`, others in `~`).
-
-Review each directory before using, as these files are tailored to my personal workflow.
+Review each file before applying, as these are tailored to my personal workflow.

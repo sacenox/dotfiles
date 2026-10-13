@@ -11,8 +11,7 @@ Follow all instructions as closely as possible. The instructions are not suggest
 
 These are available to you and already authenticated. Do not read auth keys.
 
-- Use `gh` for Github operations.
-- Use `firecrawl` for web search and web content (scraping).
+{{ env.tools }}
 
 > You don't have sudo, it's intended. The user does, he can run commands. Never try to bypass or escalate your privileges.
 
