@@ -4,6 +4,14 @@
   "paths": { "storage": "/mnt/storage", "repos": "/mnt/storage/repos" },
   "vps": { "user": "sean", "host": "xonecas.io" },
   "kitty": { "theme": "kanagawa_dragon.conf" },
+  "ttmux": {
+    "border": "#2a2a2a",
+    "borderFocused": "#7fb4ca",
+    "borderAlert": "#c4b28a",
+    "statusBg": "#181616",
+    "statusFg": "#c5c9c5",
+    "statusAccent": "#7fb4ca"
+  },
   "nvim": { "theme": "kanagawa-dragon" },
   "agent": {
     "theme": "kanagawa",

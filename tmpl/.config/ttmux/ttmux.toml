@@ -1,0 +1,97 @@
+[general]
+shell = ""
+shell-args = []
+mouse = true
+scrollback = 10000
+free-mode = false
+focus-follows-mouse = false
+passthrough-images = true
+clipboard = true
+notifications = true
+copy-mode = false
+prefix-timeout-ms = 1500
+keys-preset = "vim"
+which-key = true
+update-environment = [
+    "SSH_AUTH_SOCK",
+    "SSH_CONNECTION",
+    "SSH_CLIENT",
+    "SSH_TTY",
+    "DISPLAY",
+    "TERM_PROGRAM",
+    "TERM_PROGRAM_VERSION",
+    "TERM_SESSION_ID",
+    "__CFBundleIdentifier",
+    "XPC_SERVICE_NAME",
+    "XPC_FLAGS",
+    "SECURITYSESSIONID",
+]
+
+# Palette from the kanagawa-dragon preset (see tmpl/.config/kitty/kanagawa_dragon.conf).
+[appearance]
+border-style = "curved"
+border = "{{ ttmux.border }}"
+border-focused = "{{ ttmux.borderFocused }}"
+border-alert = "{{ ttmux.borderAlert }}"
+title-position = "top"
+dim-unfocused = false
+gap = 0
+float-shadow = true
+
+[status]
+bg = "{{ ttmux.statusBg }}"
+fg = "{{ ttmux.statusFg }}"
+accent = "{{ ttmux.statusAccent }}"
+separator = " │ "
+time-format = "%H:%M"
+effect = "flat"
+
+[status.header]
+enabled = false
+left = ["host"]
+center = ["tabs"]
+right = ["session"]
+
+[status.footer]
+enabled = true
+left = [
+    "session",
+    "mode",
+]
+center = ["tabs"]
+right = [
+    "agents",
+    "time",
+]
+
+[status.widgets]
+
+[agents]
+enabled = true
+bell-on-attention = true
+busy-spinner = "braille"
+attention-patterns = [
+    "waiting for input",
+    "needs your input",
+    "awaiting approval",
+    "permission",
+    "(y/n)",
+    "[y/n]",
+    "continue?",
+    "?",
+]
+busy-patterns = [
+    "working",
+    "thinking",
+    "running",
+    "esc to interrupt",
+    "…",
+]
+done-patterns = [
+    "done",
+    "complete",
+    "finished",
+    "✓",
+]
+
+[keys]
