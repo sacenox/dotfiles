@@ -13,6 +13,7 @@
     "statusAccent": "#7fb4ca"
   },
   "nvim": { "theme": "kanagawa-dragon" },
+  "zellij": { "theme": "kanagawa-dragon" },
   "agent": {
     "theme": "kanagawa",
     "provider": "opencode-go",

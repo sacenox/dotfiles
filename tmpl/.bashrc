@@ -23,7 +23,6 @@ alias rep='cd {{ paths.repos }}'
 
 alias vps='ssh {{ vps.user }}@{{ vps.host }}'
 
-export FIRECRAWL_API_KEY='{{ FIRECRAWL_API_KEY }}'
 export HOSTINGER_API_KEY='{{ HOSTINGER_API_KEY }}'
 export OPENCODE_API_KEY='{{ OPENCODE_API_KEY }}'
 export PORKBUN_API_KEY='{{ PORKBUN_API_KEY }}'
