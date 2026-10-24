@@ -4,16 +4,31 @@
   "paths": { "storage": "/mnt/storage", "repos": "/mnt/storage/repos" },
   "vps": { "user": "sean", "host": "xonecas.io" },
   "kitty": { "theme": "kanagawa_dragon.conf" },
-  "ttmux": {
-    "border": "#2a2a2a",
-    "borderFocused": "#7fb4ca",
-    "borderAlert": "#c4b28a",
-    "statusBg": "#181616",
-    "statusFg": "#c5c9c5",
-    "statusAccent": "#7fb4ca"
+  "herdr": {
+    "theme": "kanagawa",
+    "colors": {
+      "sidebar_bg": "#12120f",
+      "panel_bg": "#181616",
+      "active_row_bg": "#282727",
+      "selection_bg": "#223249",
+      "surface_dim": "#1d1c19",
+      "surface0": "#282727",
+      "surface1": "#393836",
+      "overlay0": "#625e5a",
+      "overlay1": "#7a8382",
+      "text": "#c5c9c5",
+      "subtext0": "#c8c093",
+      "accent": "#8ba4b0",
+      "mauve": "#8992a7",
+      "green": "#8a9a7b",
+      "yellow": "#c4b28a",
+      "red": "#c4746e",
+      "blue": "#658594",
+      "teal": "#8ea4a2",
+      "peach": "#b98d7b"
+    }
   },
   "nvim": { "theme": "kanagawa-dragon" },
-  "zellij": { "theme": "kanagawa-dragon" },
   "agent": {
     "theme": "kanagawa",
     "provider": "opencode-go",

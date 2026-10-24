@@ -9,6 +9,7 @@
     "bash"
   ],
   "snapshotIgnoreDirs": [
+    "*lock.json",
     ".git"
   ],
   "mcpServers": {
@@ -16,5 +17,7 @@
       "url": "https://mcp.firecrawl.dev/v2/mcp",
       "headers": { "Authorization": "{{ FIRECRAWL_API_KEY }}" }
     }
-  }
+  },
+  "showImages": true,
+  "herdr": true
 }
