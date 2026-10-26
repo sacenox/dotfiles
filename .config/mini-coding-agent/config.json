@@ -1,0 +1,35 @@
+{
+  "tools": [
+    "read",
+    "bash"
+  ],
+  "snapshotIgnoreDirs": [
+    "*lock.json",
+    ".git"
+  ],
+  "snapshotDiffsInContext": true,
+  "programStatus": true,
+  "notifications": "both",
+  "showImages": true,
+  "provider": "opencode-go",
+  "model": "deepseek-v4.1-flash",
+  "thinkingEffort": "low",
+  "colorscheme": {
+    "comment": "#bdbdbd",
+    "prompt": "#97bedc",
+    "accent": "#00988e",
+    "err": "#e27373",
+    "warn": "#ffba7b",
+    "code": "#bdbdbd",
+    "diff_add": "#94b979",
+    "diff_delete": "#e27373",
+    "inline_code": "#00988e",
+    "link": "#97bedc",
+    "heading1": "#b1d8f6",
+    "heading2": "#1ab2a8",
+    "heading3": "#fbdaff",
+    "heading4": "#bddeab",
+    "heading5": "#ffdca0",
+    "heading6": "#ffa1a1"
+  }
+}
