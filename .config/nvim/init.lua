@@ -19,22 +19,28 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     -- Theme
-    {
-      "nanotech/jellybeans.vim",
+    { 
+      'olivercederborg/poimandres.nvim',
       lazy = false,
       priority = 1000,
+      config = function()
+        require('poimandres').setup {
+          -- leave this setup function empty for default config
+          -- or refer to the configuration section
+          -- for configuration options
+          disable_background = true,
+        }
+      end,
+
+      -- optionally set the colorscheme within lazy config
+      init = function()
+        vim.cmd("colorscheme poimandres")
+      end
     },
 
     -- Git signs
     {
       "lewis6991/gitsigns.nvim",
-      opts = {},
-    },
-
-    -- Statusline
-    {
-      'nvim-mini/mini.statusline',
-      version = false,
       opts = {},
     },
 
@@ -165,4 +171,75 @@ keymap('n', 'k', 'gk', { noremap = true })
 vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 
-vim.cmd.colorscheme("jellybeans")
+-- Statusline
+local mode_groups = {
+  { 'NORMAL', 'String' },
+  { 'INSERT', 'Constant' },
+  { 'VISUAL', 'Special' },
+  { 'REPLACE', 'ErrorMsg' },
+  { 'COMMAND', 'WarningMsg' },
+  { 'TERMINAL', 'Title' },
+}
+local mode_keys = { n = 1, i = 2, v = 3, R = 4, c = 5, t = 6 }
+local git_groups = {
+  { 'StatusGitAdd', '+', 'DiffAdd DiagnosticOk String' },
+  { 'StatusGitChange', '~', 'DiffChange DiagnosticWarn Constant' },
+  { 'StatusGitDelete', '-', 'DiffDelete DiagnosticError ErrorMsg' },
+}
+
+local function apply_theme()
+  local function fg(names)
+    for name in names:gmatch('%S+') do
+      local color = vim.api.nvim_get_hl(0, { name = name, link = false }).fg
+      if color then return color end
+    end
+  end
+  for _, m in ipairs(mode_groups) do
+    local color = fg(m[2])
+    if color then vim.api.nvim_set_hl(0, 'StatusMode' .. m[1], { fg = color, bold = true }) end
+  end
+  for _, g in ipairs(git_groups) do
+    local color = fg(g[3])
+    if color then vim.api.nvim_set_hl(0, g[1], { fg = color, bold = true }) end
+  end
+  local dir = fg('Directory')
+  if dir then vim.api.nvim_set_hl(0, 'StatusFile', { fg = dir }) end
+  -- match the statusline background to the Normal background
+  local bg = vim.api.nvim_get_hl(0, { name = 'Normal', link = false }).bg
+  for _, g in ipairs({ 'StatusLine', 'StatusLineNC' }) do
+    local hl = vim.api.nvim_get_hl(0, { name = g, link = false })
+    hl.bg, hl.cterm, hl.ctermbg = bg, nil, nil
+    vim.api.nvim_set_hl(0, g, hl)
+  end
+end
+
+apply_theme()
+vim.api.nvim_create_autocmd('ColorScheme', { callback = apply_theme })
+
+local function git_info()
+  local d = vim.b.gitsigns_status_dict
+  if not (d and d.head) then return '' end
+  local parts, counts = { ' ' .. d.head }, { d.added, d.changed, d.removed }
+  for i, g in ipairs(git_groups) do
+    if (counts[i] or 0) > 0 then
+      parts[#parts + 1] = ('%%#%s#%s%d%%#StatusLine#'):format(g[1], g[2], counts[i])
+    end
+  end
+  return table.concat(parts, ' ')
+end
+
+local function statusline()
+  local m = vim.api.nvim_get_mode().mode:sub(1, 1)
+  if m == '\22' or m == 'V' or m == 's' or m == 'S' then m = 'v' end
+  local mode = mode_groups[mode_keys[m] or 1][1]
+  return table.concat({
+    '%#StatusMode' .. mode .. '# ' .. mode .. ' ',
+    '%#StatusLine# %f%m%=',
+    git_info(),
+    ' %#StatusFile#' .. (vim.bo.filetype ~= '' and vim.bo.filetype or 'text'),
+    '%#StatusLine# %p%% ',
+  })
+end
+
+_G.Statusline = statusline
+vim.o.statusline = '%!v:lua.Statusline()'
