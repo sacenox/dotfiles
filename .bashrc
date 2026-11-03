@@ -37,8 +37,7 @@ alias gc='git commit --verbose'
 alias gp='git pull --rebase'
 alias gpo='git push origin'
 
-eval "$(fzf --bash)"
-eval "$(starship init bash)"
-
-# --- 8< ---
+# Requires fzf and starship.rs
+# eval "$(fzf --bash)"
+# eval "$(starship init bash)"
 

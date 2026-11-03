@@ -19,18 +19,12 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     -- Theme
-
     {
-      "zenbones-theme/zenbones.nvim",
-      -- Optionally install Lush. Allows for more configuration or extending the colorscheme
-      -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-      -- In Vim, compat mode is turned on as Lush only works in Neovim.
-      dependencies = "rktjmp/lush.nvim",
+      "kungfusheep/mfd.nvim",
       lazy = false,
       priority = 1000,
-      -- you can set set configuration options here
       config = function()
-        vim.cmd.colorscheme('neobones')
+        vim.cmd.colorscheme('mfd-flir-rh')
       end
     },
 
@@ -38,6 +32,17 @@ require("lazy").setup({
     {
       "lewis6991/gitsigns.nvim",
       opts = {},
+    },
+
+    -- File explorer
+    {
+      'nvim-tree/nvim-tree.lua',
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      cmd = 'NvimTreeToggle',
+      opts = {
+        git = { enable = true, ignore = true }, -- respect .gitignore
+        filters = { dotfiles = false }, -- show dot files
+      },
     },
 
     -- Fuzzy Finder
@@ -158,6 +163,7 @@ keymap('n', '<leader>f', ':Telescope grep_string<CR>', opts)
 keymap('n', '<leader>g', ':Telescope live_grep<CR>', opts)
 keymap('n', '<leader>o', ':Telescope find_files<CR>', opts)
 keymap('n', '<leader>b', ':Telescope buffers<CR>', opts)
+keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true, desc = 'Toggle file explorer' })
 
 -- Movement remaps
 keymap('n', 'j', 'gj', { noremap = true })
