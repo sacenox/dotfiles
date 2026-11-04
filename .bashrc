@@ -37,6 +37,9 @@ alias gc='git commit --verbose'
 alias gp='git pull --rebase'
 alias gpo='git push origin'
 
+# Claude Code: skip workspace trust prompt
+export CLAUDE_CODE_SANDBOXED=1
+
 # Requires fzf and starship.rs
 # eval "$(fzf --bash)"
 # eval "$(starship init bash)"
