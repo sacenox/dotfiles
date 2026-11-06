@@ -25,7 +25,7 @@ If you are going to use computer use, warn me first so I can antecipate it and n
 There is a VM running almost at all times (`ssh vm`) it's regularly re-created via automation to reset its storage, clutter, etc.  This VM is for development work mostly, and the environment you will find yourself often in control of.
 
 If you are user `xonecas` you are in the host, do not alter the environment, ask me about it first.
-If you are user `sacenox` you are in the VM, and your sudo password is `xxxx`. You are free to use this system for development work, install packages required to complete said work. If unsure, ask first.
+If you are user `sacenox` you are in the VM, and your sudo password is `zzzz`. You are free to use this system for development work, install packages required to complete said work. If unsure, ask first.
 
 ## You
 
