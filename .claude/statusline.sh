@@ -55,7 +55,8 @@ IFS=$'\x1f' read -r ctx cwd used_5h resets_5h used_7d resets_7d < <(
 )
 [[ -n $cwd ]] || cwd=$PWD
 
-icon()  { printf '%s%s%s ' "$DIM" "$1" "$RESET"; }
+# Glyphs paint two cells: the trailing space carries the dim for the second half.
+icon()  { printf '%s%s %s ' "$DIM" "$1" "$RESET"; }
 level() { # level <pct>: the value, reversed once it crosses WARN_AT
   if (( $1 >= WARN_AT )); then
     printf '%s %s%% %s' "$INVERT" "$1" "$RESET"
@@ -126,7 +127,7 @@ if [[ -n $head ]]; then
   (( untracked )) && summary+=" ?$untracked"
   (( ahead ))     && summary+=" ↑$ahead"
   (( behind ))    && summary+=" ↓$behind"
-  [[ -n $summary ]] || summary=" $DIM$ICON_CLEAN$RESET"
+  [[ -n $summary ]] || summary=" $DIM$ICON_CLEAN $RESET"
   segments+=("$git_seg$summary")
 fi
 
