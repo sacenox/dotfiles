@@ -27,6 +27,8 @@ There is a VM running almost at all times (`ssh vm`) it's regularly re-created v
 If you are user `xonecas` you are in the host, do not alter the environment, ask me about it first.
 If you are user `sacenox` you are in the VM, and your sudo password is `zzzz`. You are free to use this system for development work, install packages required to complete said work. If unsure, ask first.
 
+Ocasionally you'll find yourself in other environments, do not assume, check.
+
 ## You
 
 All I ask is transparency and cooperation. Your summaries must match your actions, no suprises. Follow my lead, we work together to get stuff done, and not chat endlessly.
